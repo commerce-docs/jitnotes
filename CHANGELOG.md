@@ -7,43 +7,43 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights  
   
--   Add shimmer loader on dynamic blocks to avoid layout shift. Shimmer loaders will only be rendered if minHeight is specified on the row containing a dynamic block. This gives flexibility to users to display a shimmer or not (let's say a dynamic block wouldn't render most of the time, we probably don't want to display a shimmer) PR: 3713  
--   Added the new \`PersonalizedContentSampleDataVenia\` module that contains customer segments, dynamic blocks and cart rule promotion sample data for personalized content. PR: 19.,2.,3670  
--   You can now use ReCaptcha V3 on the Braintree payment form and the Place Order form. PR: 3691,24  
+-   Add shimmer loader on dynamic blocks to avoid layout shift. Shimmer loaders will only be rendered if minHeight is specified on the row containing a dynamic block. This gives flexibility to users to display a shimmer or not (let's say a dynamic block wouldn't render most of the time, we probably don't want to display a shimmer) — [3713][]  
+-   Added the new \`PersonalizedContentSampleDataVenia\` module that contains customer segments, dynamic blocks and cart rule promotion sample data for personalized content. — [19.,2.,3670][]  
+-   You can now use ReCaptcha V3 on the Braintree payment form and the Place Order form. — [3691,24][]  
 -   reCAPTCHA V3 validation is now available on the following customer forms:
     \- Customer Login
     \- Customer account creation
-    \- Customer information change (password) PR: 3702  
--   reCaptcha has been enabled for the Forgot Password form. PR: 3604,12,20  
--   MISSING RELEASE NOTE  
--   MISSING RELEASE NOTE  
--   In the Link component, \`prefetchType\` property has been renamed to \`shouldPrefetch\`. This helps to clarify that it is a boolean, rather a property that returns a type. \`prefetchType\` is deprecated but not removed. PR: 3646  
--   Store-view specific label and localization support has been added for product attributes. PR: 17  
--   MISSING RELEASE NOTE  
--   Refactored the reCaptcha to ensure it is backwards compatible with 12.2.0. PR: 3696  
--   The "Sign In" link has been removed from from the 2nd stage of checkout. This will ensure the cart configuration (guest or account holder) does not change in the middle of checkout. PR: 3672  
--   MISSING RELEASE NOTE  
--   Images from PageBuilder content now include height and width dimensions. This will help with initial layout rendering. PR: files  
--   Shopping cart promotions are now properly displayed depending on customer segment. For instance, an incorrect promotion could be displayed when merging a guest cart with a customer cart. PR: 3609  
--   You can now make GraphQL queries for dynamic blocks. PR: 3587,2  
--   Configurable images are now shown in the Edit Cart Item menu. Previously, the parent image would be shown, without configured options. PR: 3695  
--   PWA Studio can now retrieve image metadata from PageBuilder. PR: 16,17  
--   PWA Studio now supports PHP 8.1. PR: 14,11,7,17  
--   Dependency packages have been updated. See https&#x3A;//github.com/magento/pwa-studio/pull/3611 for more details about specific package versions. PR: 3611  
--   MISSING RELEASE NOTE  
--   Adobe Commerce users can now set gift options on the Order level. PR: 3540  
--   The correct product-specific image is now displayed in the mini-cart. Previously, the default product image was shown. PR: 3690  
--   Long wish list names no longer break the layout or force scrolling to close modal dialogs. PR: 3706  
--   We now use "Best Match" as the default sort order on the Search Results page. Previously "Position" was the default order. PR: 3698  
--   Products with configurable product variants are now properly added to Wish Lists. Previously, adding a configurable product threw an error. PR: files  
--   MISSING RELEASE NOTE  
--   MISSING RELEASE NOTE  
--   GraphQL now properly returns only qualified blocks to PWA Studio. Previously, unqualified blocks were mistakenly sent in the query. PR: 3678,3  
--   The virtual products extension has been removed. PR: 3612  
--   Changed instances of the \`useMemo\` type to \`const\` in the \`productUrlSuffix\` talon to improve performance. PR: 3660  
--   PWA Studio now properly hides the "Create a list" button when reaching the maximum number of wishlists in the users "Favorite lists". Previously, the button was displayed when the max number was reached. PR: 3668  
--   CSS has been adjusted so that the header logo no longer overlaps the main navigation. PR: 3659  
--   Fix the click target accuracy when clicking tab in a long list of tabs from the pagebuilder. PR: 3676  
+    \- Customer information change (password) — [3702][]  
+-   reCaptcha has been enabled for the Forgot Password form. — [3604,12,20][]  
+-   MISSING RELEASE NOTE— [PWA-2453][]  
+-   MISSING RELEASE NOTE— [PWA-2653][]  
+-   In the Link component, \`prefetchType\` property has been renamed to \`shouldPrefetch\`. This helps to clarify that it is a boolean, rather a property that returns a type. \`prefetchType\` is deprecated but not removed. — [3646][]  
+-   Store-view specific label and localization support has been added for product attributes. — [17][]  
+-   MISSING RELEASE NOTE— [PWA-2610][]  
+-   Refactored the reCaptcha to ensure it is backwards compatible with 12.2.0. — [3696][]  
+-   The "Sign In" link has been removed from from the 2nd stage of checkout. This will ensure the cart configuration (guest or account holder) does not change in the middle of checkout. — [3672][]  
+-   MISSING RELEASE NOTE— [PWA-2296][]  
+-   Images from PageBuilder content now include height and width dimensions. This will help with initial layout rendering. — [files][]  
+-   Shopping cart promotions are now properly displayed depending on customer segment. For instance, an incorrect promotion could be displayed when merging a guest cart with a customer cart. — [3609][]  
+-   You can now make GraphQL queries for dynamic blocks. — [3587,2][]  
+-   Configurable images are now shown in the Edit Cart Item menu. Previously, the parent image would be shown, without configured options. — [3695][]  
+-   PWA Studio can now retrieve image metadata from PageBuilder. — [16,17][]  
+-   PWA Studio now supports PHP 8.1. — [14,11,7,17][]  
+-   Dependency packages have been updated. See https&#x3A;//github.com/magento/pwa-studio/pull/3611 for more details about specific package versions. — [3611][]  
+-   MISSING RELEASE NOTE— [PWA-2220][]  
+-   Adobe Commerce users can now set gift options on the Order level. — [3540][]  
+-   The correct product-specific image is now displayed in the mini-cart. Previously, the default product image was shown. — [3690][]  
+-   Long wish list names no longer break the layout or force scrolling to close modal dialogs. — [3706][]  
+-   We now use "Best Match" as the default sort order on the Search Results page. Previously "Position" was the default order. — [3698][]  
+-   Products with configurable product variants are now properly added to Wish Lists. Previously, adding a configurable product threw an error. — [files][]  
+-   MISSING RELEASE NOTE— [PWA-2617][]  
+-   MISSING RELEASE NOTE— [PWA-2616][]  
+-   GraphQL now properly returns only qualified blocks to PWA Studio. Previously, unqualified blocks were mistakenly sent in the query. — [3678,3][]  
+-   The virtual products extension has been removed. — [3612][]  
+-   Changed instances of the \`useMemo\` type to \`const\` in the \`productUrlSuffix\` talon to improve performance. — [3660][]  
+-   PWA Studio now properly hides the "Create a list" button when reaching the maximum number of wishlists in the users "Favorite lists". Previously, the button was displayed when the max number was reached. — [3668][]  
+-   CSS has been adjusted so that the header logo no longer overlaps the main navigation. — [3659][]  
+-   Fix the click target accuracy when clicking tab in a long list of tabs from the pagebuilder. — [3676][]  
 
 
 | Type  | Description                                                                                                                                       | GitHub PR                       |

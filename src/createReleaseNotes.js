@@ -1,5 +1,6 @@
 const {
     root,
+    separator,
     table,
     tableRow,
     tableCell,
@@ -8,13 +9,13 @@ const {
     paragraph,
     list,
     listItem,
+    link,
     brk,
     emphasis,
     strong,
 } = require('mdast-builder');
 const unified = require('unified');
 const stringify = require('remark-stringify');
-
 const createLinkToGitHubReleases = () => {
     return {
         type: 'definition',
@@ -148,23 +149,7 @@ const createSummaryTable = jiraIssues => {
     ]);
 
     const createTableRow = ({issuetype, key, prNumber, title}) => {
-        const ghLinkReferences = [];
-        const githubLinkReference = createGitHubLinkReference(prNumber);
-
-        if (githubLinkReference.identifier.includes(',')) {
-            const linkReferences = githubLinkReference.identifier.split(',');
-            linkReferences.forEach(prNum => {
-                ghLinkReferences.push({
-                    type: 'linkReference',
-                    identifier: prNum,
-                    label: prNum,
-                    referenceType: 'collapsed',
-                    children: [text(prNum)]
-                },text(', '));
-            })
-        } else {
-            ghLinkReferences.push(githubLinkReference)
-        }
+        const ghLinkReferences = createGitHubPrLinks(prNumber);
         const jiraLinkReference = createJiraLinkReference(key);
         return tableRow([
             tableCell([text(issuetype)]),
@@ -184,16 +169,28 @@ const createHighlights = jiraIssues => {
     const highlights = [];
     highlights.push(heading(2, text(`Highlights`)), brk,brk)
 
-    jiraIssues.map(({description, prNumber}) => {
+    jiraIssues.map(({description, prNumber, key}) => {
+        // const prNumberLinks = createGitHubPrLinks(prNumber);
         if(description) {
             highlights.push(list('unordered', [
-                listItem([text(description), text(' PR: '), text(prNumber)])
+                listItem([
+                    paragraph([
+                        text(description), 
+                        text(' — '),
+                        createGitHubLinkReference(prNumber)
+                    ])
+                ])
             ]));
             highlights.push(brk)
         } else {
             highlights.push(list('unordered', [
-                listItem(text('MISSING RELEASE NOTE'))
-            ]));
+                listItem([
+                    paragraph([
+                        text('MISSING RELEASE NOTE'), 
+                        text('— '),
+                        createJiraLinkReference(key)
+                    ])
+            ])]));
             highlights.push(brk)
         }
     })
@@ -217,3 +214,25 @@ const createReleaseNotes = (jiraIssues) => {
 };
 
 module.exports = createReleaseNotes;
+
+function createGitHubPrLinks(prNumber) {
+    const ghLinkReferences = [];
+    const githubLinkReference = createGitHubLinkReference(prNumber);
+
+    if (githubLinkReference.identifier.includes(',')) {
+        const linkReferences = githubLinkReference.identifier.split(',');
+        linkReferences.forEach(prNum => {
+            ghLinkReferences.push({
+                type: 'linkReference',
+                identifier: prNum,
+                label: prNum,
+                referenceType: 'collapsed',
+                children: [text(prNum)]
+            }, text(', '));
+        });
+    } else {
+        ghLinkReferences.push(githubLinkReference);
+    }
+    return ghLinkReferences;
+}
+
