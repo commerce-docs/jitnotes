@@ -7,11 +7,11 @@ A tool for drafting release notes by merging Jira and GitHub information into a 
 1. Clone this repo to your local machine.
 2. Open the project in VS Code.
 3. Run `yarn install`.
-4. Run `yarn start`.
+4. Create a `.env` file with your Jira and GitHub authentication tokens. You can create these tokens yourself, but for Jira access, you need to contact our Jira administrators.
+    ```env
+    JIRA_AUTH='[base64 Jira token]'
+    GITHUB_API_TOKEN='[personal access token]'
+    ```
+5. Run `yarn start`.
 
 This will generate a new CHANGELOG.md file in the project's root as well as print the output in the console.
-
-More details to follow.
-
-
-
