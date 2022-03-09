@@ -1,0 +1,17 @@
+{
+  "name": "release-notes-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "mdast-builder": "^1.1.1",
+    "node-fetch": "^2.6.0",
+    "remark-stringify": "^7.0.2",
+    "unified": "^8.3.2"
+  }
+}
