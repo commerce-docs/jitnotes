@@ -1,6 +1,15 @@
-# ReleaseNotes Generator
+# Releaser — A release notes generator
 
-A tool for drafting release notes by merging Jira and GitHub information into a markdown format ready for informing and description editing of release note stories and bugs. This project will soon become a CLI to make it super easy to create a first draft of release notes for an Adobe project tracked internally using Jira.
+These scripts will morph into a simple CLI for generating release notes using content from Jira and GitHub as the source. Currently, the scripts generate a release notes markdown file with the following sections:
+
+- Highlights
+- Summary table (Jira stories and bugs)
+- Documentation updates
+- Known Issues
+- Upgrading from previous versions
+- Update dependencies (which contains the dependencies table)
+
+This project will soon become a CLI to make it super easy to create release notes files for any Jira project.
 
 ## Current Usage
 
