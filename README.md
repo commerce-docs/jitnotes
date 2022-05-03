@@ -1,15 +1,13 @@
 # Releaser — A release notes generator
 
-These scripts will morph into a simple CLI for generating release notes using content from Jira and GitHub as the source. Currently, the scripts generate a release notes markdown file with the following sections:
+My goal is to morph this project into a simple CLI that asks questions and applies the answers to a Release Notes template to make the whole release notes process much less labor intensive. Currently, the scripts retrieve information from Jira and GitHub to generate a release notes markdown file with the following sections:
 
-- Highlights
+- Highlights (Depends on entry of release notes for Epics. In progress.)
 - Summary table (Jira stories and bugs)
 - Documentation updates
 - Known Issues
 - Upgrading from previous versions
 - Update dependencies (which contains the dependencies table)
-
-This project will soon become a CLI to make it super easy to create release notes files for any Jira project.
 
 ## Current Usage
 
@@ -24,3 +22,4 @@ This project will soon become a CLI to make it super easy to create release note
 5. Run `yarn start`.
 
 This will generate a new CHANGELOG.md file in the project's root as well as print the output in the console.
+
