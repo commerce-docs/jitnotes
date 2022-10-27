@@ -28,13 +28,13 @@ const createLinkToGitHubReleases = () => {
 
 // Jira ticket reference links for the summary table
 const createJiraLinkReference = ticketNumber => {
-  return ({
-    type: 'linkReference',
-    identifier: ticketNumber,
-    label: ticketNumber,
-    referenceType: 'collapsed',
-    children: [text(ticketNumber)]
-  });
+    return ({
+        type: 'linkReference',
+        identifier: ticketNumber,
+        label: ticketNumber,
+        referenceType: 'collapsed',
+        children: [text(ticketNumber)]
+    });
 };
 
 // GitHub PR reference links for the summary table
@@ -85,7 +85,7 @@ const createJiraLinkDefinitions = jiraIssues => {
             type: 'definition',
             identifier: jiraIssue.key,
             label: jiraIssue.key,
-            url: 'https://jira.corp.magento.com/browse/' + jiraIssue.key,
+            url: 'https://jira.corp.adobe.com/browse/' + jiraIssue.key,
             title: null,
         };
     };
@@ -95,7 +95,7 @@ const createJiraLinkDefinitions = jiraIssues => {
         jiraLinkDefinitions.push(linkDefinition);
         jiraLinkDefinitions.push(brk);
     })
-    return root({type: 'paragraph', children: jiraLinkDefinitions})
+    return root({ type: 'paragraph', children: jiraLinkDefinitions })
 };
 
 const createGithubLinkDefinitions = jiraIssues => {
@@ -137,7 +137,7 @@ const createGithubLinkDefinitions = jiraIssues => {
         }
     })
 
-    return root({type: 'paragraph', children: githubLinkDefinitions,})
+    return root({ type: 'paragraph', children: githubLinkDefinitions, })
 };
 
 const createSummaryTable = jiraIssues => {
@@ -145,17 +145,17 @@ const createSummaryTable = jiraIssues => {
         tableCell([text('Type')]),
         tableCell([text('Description')]),
         tableCell([text('GitHub PR')]),
-        // tableCell([text('Jira Issue')]),
+        tableCell([text('Jira Issue')]),
     ]);
 
-    const createTableRow = ({issuetype, key, prNumber, title}) => {
+    const createTableRow = ({ issuetype, key, prNumber, title }) => {
         const ghLinkReferences = createGitHubPrLinks(prNumber);
         const jiraLinkReference = createJiraLinkReference(key);
         return tableRow([
             tableCell([text(issuetype)]),
             tableCell([text(title || '')]),
             tableCell(ghLinkReferences),
-            // tableCell(jiraLinkReference),
+            tableCell(jiraLinkReference),
         ]);
     };
     const summaryTableRows = [];
@@ -165,19 +165,21 @@ const createSummaryTable = jiraIssues => {
         table(['left', 'left', 'left'], [tableHeader, ...summaryTableRows]),
     ]);
 };
-const createHighlights = jiraIssues => {
+const createHighlights = (jiraIssues, githubPRs) => {
     const highlights = [];
-    highlights.push(heading(2, text(`Highlights`)), brk,brk)
+    highlights.push(heading(2, text(`Highlights`)), brk, brk)
 
-    jiraIssues.map(({description, prNumber, key}) => {
-        // const prNumberLinks = createGitHubPrLinks(prNumber);
-        if(description) {
+    jiraIssues.map(({ releaseNotes, issuetype, key, prNumber }) => {
+        const prNumberLinks = createGitHubPrLinks(prNumber);
+        if (releaseNotes) {
             highlights.push(list('unordered', [
                 listItem([
                     paragraph([
-                        text(description), 
+                        text(issuetype),
+                        text(': '),
+                        createGitHubLinkReference(prNumber),
                         text(' — '),
-                        createGitHubLinkReference(prNumber)
+                        text(releaseNotes),
                     ])
                 ])
             ]));
@@ -186,29 +188,28 @@ const createHighlights = jiraIssues => {
             highlights.push(list('unordered', [
                 listItem([
                     paragraph([
-                        text('MISSING RELEASE NOTE'), 
-                        text('— '),
+                        text('MISSING JIRA RELEASE NOTE'),
+                        text(' — '),
                         createJiraLinkReference(key)
                     ])
-            ])]));
+                ])]));
             highlights.push(brk)
         }
     })
 
-    return root({type: 'paragraph', children: highlights,})
+    return root({ type: 'paragraph', children: highlights, })
 };
 
-const createReleaseNotes = (jiraIssues) => {
+const createReleaseNotes = (jiraIssues, githubPRs) => {
     const processor = unified().use(stringify, {});
     const releaseVersion = jiraIssues[0].releaseVersion;
-    createHighlights(jiraIssues)
+    createHighlights(jiraIssues, githubPRs);
     const introduction = processor.stringify(createIntroduction(releaseVersion));
-    const highlights = processor.stringify(createHighlights(jiraIssues));
-    const summaryTable = processor.stringify(createSummaryTable(jiraIssues));
-    // const boilerPlate = processor.stringify(CreateBoilerPlate(jiraIssues));
-    const jiraLinks = processor.stringify(createJiraLinkDefinitions(jiraIssues));
-    const githubLinks = processor.stringify(createGithubLinkDefinitions(jiraIssues));
-    const githubReleasesLink = processor.stringify(createLinkToGitHubReleases(jiraIssues));
+    const highlights = processor.stringify(createHighlights(jiraIssues, githubPRs));
+    const summaryTable = processor.stringify(createSummaryTable(jiraIssues, githubPRs));
+    const jiraLinks = processor.stringify(createJiraLinkDefinitions(jiraIssues, githubPRs));
+    const githubLinks = processor.stringify(createGithubLinkDefinitions(jiraIssues, githubPRs));
+    const githubReleasesLink = processor.stringify(createLinkToGitHubReleases(jiraIssues, githubPRs));
 
     return `${introduction}\n\n${highlights}\n\n${summaryTable}\n\n${jiraLinks}\n\n${githubLinks}\n\n${githubReleasesLink}\n\n`;
 };

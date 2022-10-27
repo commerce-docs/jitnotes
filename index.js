@@ -21,14 +21,14 @@ const fetchGitHubData = require('./src/fetchGitHubData');
 const createGitHubPrObjects = require('./src/createGitHubPrObjects');
 const createJiraIssueObjects = require('./src/createJiraIssueObjects');
 
-const JiraReleaseQuery = "project = PWA AND fixVersion = 22776 AND issuetype != Task AND status = 'Deployment Q' ORDER BY issuetype DESC";
+const JiraReleaseQuery = "project = PWA AND issuetype != Task AND status = 'Deployment Queue' ORDER BY issuetype DESC";
 const encodedURL = escape(JiraReleaseQuery);
 
 const start = async (jiraAPI) => {
     const jiraData = await fetchJiraData(jiraAPI);
-    const githubData = await fetchGitHubData('magento/pwa-studio', '2021-11-05', '2022-02-28');
+    const githubData = await fetchGitHubData('magento/pwa-studio', '2022-08-09', '2022-10-15');
     const jiraIssues = await createJiraIssueObjects(jiraData);
-    const githubPRs = await createGitHubPrObjects(githubData);                                                                                                               
+    const githubPRs = await createGitHubPrObjects(githubData);
     const releaseNotes = createReleaseNotes(jiraIssues, githubPRs);
 
     try {
@@ -38,8 +38,6 @@ const start = async (jiraAPI) => {
     }
     console.log(releaseNotes);
 
-    console.log(jiraIssues[0].releaseVersion);
-
 };
 
-start(`https://jira.corp.magento.com/rest/api/2/search?jql=${encodedURL}&maxResults=150`);
+start(`https://jira.corp.adobe.com/rest/api/2/search?jql=${encodedURL}&maxResults=150`);
