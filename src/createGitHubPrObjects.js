@@ -25,4 +25,4 @@ const createGitHubPrObjects = async githubData => {
     return prs;
 };
 
-module.exports = createGitHubPrObjects;
+export default createGitHubPrObjects;

@@ -39,4 +39,4 @@ const createJiraIssueObjects = async jiraData => {
     return issues;
 };
 
-module.exports = createJiraIssueObjects;
+export default createJiraIssueObjects;

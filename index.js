@@ -1,43 +1,64 @@
-/*
-Copyright ©Adobe, Inc. All rights reserved.
-See COPYING.txt for license details.
-*/
+#!/usr/bin/env node
 
-require(`dotenv`).config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-// const clear = require('clear');
-// const chalk = require('chalk');
-// const { textSync } = require('figlet');
-// const questions = require('./lib/questions');
-// const files = require('./lib/files');
-// const placeholders = require('./lib/placeholders');
+import chalk from 'chalk';
+import clear from "clear";
+import { writeFileSync } from 'fs';
+import { escape } from 'querystring';
+import askQuestions from './src/questions.js';
+import fetchJiraData from './src/fetchJiraData.js';
+import fetchGitHubData from './src/fetchGitHubData.js';
+import createJiraIssueObjects from './src/createJiraIssueObjects.js';
+import createGitHubPrObjects from './src/createGitHubPrObjects.js';
+import createReleaseNotes from './src/createReleaseNotes.js';
+import figletPkg from 'figlet';
+const { textSync } = figletPkg;
 
-const fs = require('fs');
-const { escape } = require("querystring");
+clear();
+console.log(
+  chalk.yellowBright(textSync("PWA Releaser", { horizontalLayout: "fitted", font: "Standard" }))
+);
 
-const createReleaseNotes = require('./src/createReleaseNotes');
-const fetchJiraData = require('./src/fetchJiraData');
-const fetchGitHubData = require('./src/fetchGitHubData');
-const createGitHubPrObjects = require('./src/createGitHubPrObjects');
-const createJiraIssueObjects = require('./src/createJiraIssueObjects');
+console.log('\x1b[33m%s\x1b[0m',
+  `This CLI generates markdown text from the RELEASE NOTE field in Jira Story and Bug tickets.
+It also generates the corresponding GitHub PRs for each Story and Bug included in the release.
+The generated markdown is meant to be copied and pasted into the existing CHANGELOG.md file,
+to replace the highlights and tickets for the current release.
 
-const JiraReleaseQuery = "project = PWA AND issuetype != Task AND status = 'Deployment Queue' ORDER BY issuetype DESC";
-const encodedURL = escape(JiraReleaseQuery);
+The CLI retrieves Jira tickets based on the following JQL query criteria:
+
+1. Only Story and Bug tickets are returned. Task tickets are not included.
+2. Only Deployment Queue tickets are returned. Tickets with a "Done" status are not included.
+3. Only tickets between the start and end dates are returned.\n`
+);
+
+const jiraReleaseQuery = escape('project = PWA AND issuetype != Task AND status = "Deployment Queue" ORDER BY issuetype DESC');
+const jiraAPI = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
 
 const start = async (jiraAPI) => {
-    const jiraData = await fetchJiraData(jiraAPI);
-    const githubData = await fetchGitHubData('magento/pwa-studio', '2022-08-09', '2022-10-15');
-    const jiraIssues = await createJiraIssueObjects(jiraData);
-    const githubPRs = await createGitHubPrObjects(githubData);
-    const releaseNotes = createReleaseNotes(jiraIssues, githubPRs);
+  const answers = await askQuestions();
+  const { startDate, endDate } = answers;
 
-    try {
-        fs.writeFileSync('./CHANGELOG.md', releaseNotes);
-    } catch (err) {
-        console.error(err);
-    }
-    console.log(releaseNotes);
+  const jiraData = await fetchJiraData(jiraAPI);
+  const githubData = await fetchGitHubData('magento/pwa-studio', startDate, endDate);
+  const jiraIssues = await createJiraIssueObjects(jiraData);
+  const githubPRs = await createGitHubPrObjects(githubData);
+  const releaseNotes = createReleaseNotes(jiraIssues, githubPRs);
 
+  try {
+    writeFileSync('./CHANGELOG.md', releaseNotes);
+  } catch (err) {
+    console.error(err);
+  }
+
+  console.log('\n');
+  console.log('\x1b[33m%s\x1b[0m', `Release notes links created successfully!`);
+  console.log('\x1b[33m%s\x1b[0m', `View the CHANGELOG.md created in the root directory of this project.`);
+  console.log('\x1b[33m%s\x1b[0m', 'Output is also provided below:');
+  console.log('\n');
+  console.log(releaseNotes);
 };
 
-start(`https://jira.corp.adobe.com/rest/api/2/search?jql=${encodedURL}&maxResults=150`);
+start(jiraAPI);

@@ -1,6 +1,7 @@
-require(`dotenv`).config();
+import dotenv from 'dotenv';
+dotenv.config();
 
-const fetch = require('node-fetch');
+import fetch from "node-fetch";
 
 const fetchData = async ({ url, method }) => {
   try {
@@ -34,4 +35,4 @@ const fetchJiraData = async url => {
   }
 };
 
-module.exports = fetchJiraData;
+export default fetchJiraData;
