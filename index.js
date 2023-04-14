@@ -66,7 +66,7 @@ const start = async (jiraAPI) => {
     const githubReleasesLink = getGithubReleasesLink(releaseVersion);
 
 
-    placeholders.setupPlaceholders(answers, jiraProject, releaseVersion, previousVersion, startDate, endDate);
+    placeholders.setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
     templates.copyTemplate(jiraProject);
     templates.replaceTemplatePlaceholders(answers);
 
