@@ -19,6 +19,27 @@ import {
 import { unified } from "unified";
 import stringify from "remark-stringify";
 
+function createGitHubPrLinks(prNumber) {
+  const ghLinkReferences = [];
+  const githubLinkReference = createGitHubLinkReference(prNumber);
+
+  if (githubLinkReference.identifier.includes(',')) {
+    const linkReferences = githubLinkReference.identifier.split(',');
+    linkReferences.forEach(prNum => {
+      ghLinkReferences.push({
+        type: 'linkReference',
+        identifier: prNum,
+        label: prNum,
+        referenceType: 'collapsed',
+        children: [text(prNum)]
+      }, text(', '));
+    });
+  } else {
+    ghLinkReferences.push(githubLinkReference);
+  }
+  return ghLinkReferences;
+}
+
 const createLinkToGitHubReleases = () => {
   return {
     type: 'definition',
@@ -49,32 +70,6 @@ function createGitHubLinkReference(prNumber) {
     referenceType: 'collapsed',
     children: [text(prNumber)]
   };
-}
-
-function createIntroduction(releaseVersion) {
-  return root([
-    heading(1, text(`PWA Studio Release ${releaseVersion}`)),
-    paragraph([
-      paragraph(strong(text(`NOTE:`))),
-      brk,
-      paragraph(emphasis(text(`This changelog only contains release notes for PWA Studio and Venia ${releaseVersion}`))),
-      brk,
-      paragraph(emphasis(text(`For older release notes, see`))),
-      text(' '),
-      {
-        type: 'linkReference',
-        identifier: 'pwa studio releases',
-        label: 'PWA Studio releases',
-        referenceType: 'collapsed',
-        children: [text('PWA Studio releases')],
-      },
-      text('.'),
-    ])
-  ]);
-}
-
-const CreateBoilerPlate = (jiraIssues) => {
-  // TODO: Create other related boilerplate updates
 }
 
 const createJiraLinkDefinitions = jiraIssues => {
@@ -203,39 +198,31 @@ const createHighlights = (jiraIssues, githubPRs) => {
   return root({ type: 'paragraph', children: highlights, })
 };
 
-const createReleaseNotes = (jiraIssues, githubPRs) => {
+export function getHighlights(jiraIssues, githubPRs) {
   const processor = unified().use(stringify, {});
-  const releaseVersion = jiraIssues[0].releaseVersion;
-  const introduction = processor.stringify(createIntroduction(releaseVersion));
   const highlights = processor.stringify(createHighlights(jiraIssues, githubPRs));
-  const summaryTable = toMarkdown(createSummaryTable(jiraIssues, githubPRs), { extensions: [gfmTableToMarkdown()] });
-  const jiraLinks = processor.stringify(createJiraLinkDefinitions(jiraIssues, githubPRs));
-  const githubLinks = processor.stringify(createGithubLinkDefinitions(jiraIssues, githubPRs));
-  const githubReleasesLink = processor.stringify(createLinkToGitHubReleases(jiraIssues, githubPRs));
-
-  return `${introduction}\n\n${highlights}\n\n${summaryTable}\n\n${jiraLinks}\n\n${githubLinks}\n\n${githubReleasesLink}\n\n`;
-};
-
-export default createReleaseNotes;
-
-function createGitHubPrLinks(prNumber) {
-  const ghLinkReferences = [];
-  const githubLinkReference = createGitHubLinkReference(prNumber);
-
-  if (githubLinkReference.identifier.includes(',')) {
-    const linkReferences = githubLinkReference.identifier.split(',');
-    linkReferences.forEach(prNum => {
-      ghLinkReferences.push({
-        type: 'linkReference',
-        identifier: prNum,
-        label: prNum,
-        referenceType: 'collapsed',
-        children: [text(prNum)]
-      }, text(', '));
-    });
-  } else {
-    ghLinkReferences.push(githubLinkReference);
-  }
-  return ghLinkReferences;
+  return highlights;
 }
 
+export function getSummaryTable(jiraIssues, githubPRs) {
+  const summaryTable = toMarkdown(createSummaryTable(jiraIssues, githubPRs), { extensions: [gfmTableToMarkdown()] });
+  return summaryTable;
+}
+
+export function getJiraLinks(jiraIssues, githubPRs) {
+  const processor = unified().use(stringify, {});
+  const jiraLinks = processor.stringify(createJiraLinkDefinitions(jiraIssues, githubPRs));
+  return jiraLinks;
+}
+
+export function getGithubLinks(jiraIssues, githubPRs) {
+  const processor = unified().use(stringify, {});
+  const githubLinks = processor.stringify(createGithubLinkDefinitions(jiraIssues, githubPRs));
+  return githubLinks;
+}
+
+export function getGithubReleasesLink(jiraIssues, githubPRs) {
+  const processor = unified().use(stringify, {});
+  const githubReleasesLink = processor.stringify(createLinkToGitHubReleases(jiraIssues, githubPRs));
+  return githubReleasesLink;
+}

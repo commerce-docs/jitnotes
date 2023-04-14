@@ -1,8 +1,26 @@
 {
-  "name": "release-notes-generator",
+  "name": "releaser",
   "version": "1.0.0",
+  "description": "A CLI tool to generate release notes for the PWA Jira project and GitHub repository.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bdenham/releaser.git"
+  },
+  "keywords": [
+    "CLI",
+    "Jira",
+    "GitHub",
+    "Release Notes"
+  ],
+  "author": "Bruce Denham",
+  "bugs": {
+    "url": "https://github.com/bdenham/releaser/issues"
+  },
+  "homepage": "https://github.com/bdenham/releaser#readme",
   "main": "index.js",
-  "bin": "index.js",
+  "bin": {
+    "releaser": "index.js"
+  },
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -23,5 +41,6 @@
     "node-fetch": "^3.3.1",
     "remark-stringify": "^10.0.2",
     "unified": "^10.1.2"
-  }
+  },
+  "devDependencies": {}
 }
