@@ -52,9 +52,13 @@ const start = async () => {
 
     // Get Jira and GitHub data
     const jiraData = await fetchJiraData(jiraAPI);
+    console.log(jiraData)
     const githubData = await fetchGitHubData('magento/pwa-studio', startDate, endDate);
+    console.log(githubData)
     const jiraIssues = await createJiraIssueObjects(jiraData);
+    console.log(jiraIssues)
     const githubPRs = await createGitHubPrObjects(githubData);
+    console.log(githubPRs)
 
     // Pass Jira and GitHub data to create sections for release notes template
     const highlights = getHighlights(jiraIssues, githubPRs);
