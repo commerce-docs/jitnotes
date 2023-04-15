@@ -1,3 +1,8 @@
+/*
+Copyright © Adobe, Inc. All rights reserved.
+See COPYING.txt for license details.
+*/
+
 import { toMarkdown } from 'mdast-util-to-markdown'
 import { gfmTableToMarkdown } from 'mdast-util-gfm-table'
 

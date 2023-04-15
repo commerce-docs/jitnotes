@@ -1,3 +1,8 @@
+/*
+Copyright © Adobe, Inc. All rights reserved.
+See COPYING.txt for license details.
+*/
+
 import fetch from "node-fetch";
 
 const fetchGitHubData = (repo, startDate, endDate) => {

@@ -1,3 +1,8 @@
+/*
+Copyright © Adobe, Inc. All rights reserved.
+See COPYING.txt for license details.
+*/
+
 import dotenv from 'dotenv';
 dotenv.config();
 

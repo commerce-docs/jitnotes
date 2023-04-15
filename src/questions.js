@@ -1,9 +1,7 @@
 /*
- * Questions for user
- * --------------------
- * The answers to the following questions are stored
- * in the names of each question object defined below.
- */
+Copyright © Adobe, Inc. All rights reserved.
+See COPYING.txt for license details.
+*/
 
 import chalk from "chalk";
 import inquirer from "inquirer";
