@@ -56,15 +56,23 @@ const start = async () => {
 
     // Pass Jira and GitHub data to create sections for release notes template
     const highlights = getHighlights(jiraIssues, githubPRs);
+    console.log(highlights)
     const summaryTable = getSummaryTable(jiraIssues, githubPRs);
+    console.log(summaryTable)
     const jiraLinks = getJiraLinks(jiraIssues, githubPRs);
+    console.log(jiraLinks)
     const githubLinks = getGithubLinks(jiraIssues, githubPRs);
+    console.log(githubLinks)
     const githubReleasesLink = getGithubReleasesLink(releaseVersion);
+    console.log(githubReleasesLink)
 
     // Create and replace placeholders in template
     setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
+    console.log(githubReleasesLink)
     copyTemplate(jiraProject);
+    console.log(jiraProject)
     replaceTemplatePlaceholders(answers);
+    console.log(answers)
 
     // Push feedback to console
     console.log(`${chalk.white('✔ Release notes created successfully!\n')}`);

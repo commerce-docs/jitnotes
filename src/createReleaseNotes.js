@@ -7,9 +7,6 @@ import { toMarkdown } from 'mdast-util-to-markdown'
 import { gfmTableToMarkdown } from 'mdast-util-gfm-table'
 
 import {
-  brk, emphasis,
-  heading,
-  link,
   list,
   listItem,
   paragraph,
@@ -17,7 +14,7 @@ import {
   table,
   tableCell,
   tableRow,
-  separator, strong,
+
   text
 } from "mdast-builder";
 
@@ -196,7 +193,6 @@ const createHighlights = (jiraIssues, githubPRs) => {
       highlights.push(text('\n'));
     }
   })
-
   return root({ type: 'paragraph', children: highlights })
 };
 
@@ -208,6 +204,7 @@ export function getHighlights(jiraIssues, githubPRs) {
 
 export function getSummaryTable(jiraIssues, githubPRs) {
   const summaryTable = toMarkdown(createSummaryTable(jiraIssues, githubPRs), { extensions: [gfmTableToMarkdown()] });
+  console.log(summaryTable)
   return summaryTable;
 }
 
