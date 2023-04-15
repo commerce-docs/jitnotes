@@ -46,39 +46,25 @@ const start = async () => {
     const { jiraProject, releaseVersion, ticketStatus, startDate, endDate } = answers;
 
     const jiraReleaseQuery = escape(`project = ${jiraProject} AND issuetype != Task AND status = "${ticketStatus}" ORDER BY issuetype DESC`);
-    console.log(jiraReleaseQuery)
     const jiraAPI = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
-    console.log(jiraAPI)
 
     // Get Jira and GitHub data
     const jiraData = await fetchJiraData(jiraAPI);
-    console.log(jiraData)
     const githubData = await fetchGitHubData('magento/pwa-studio', startDate, endDate);
-    console.log(githubData)
     const jiraIssues = await createJiraIssueObjects(jiraData);
-    console.log(jiraIssues)
     const githubPRs = await createGitHubPrObjects(githubData);
-    console.log(githubPRs)
 
     // Pass Jira and GitHub data to create sections for release notes template
     const highlights = getHighlights(jiraIssues, githubPRs);
-    console.log(highlights)
     const summaryTable = getSummaryTable(jiraIssues, githubPRs);
-    console.log(summaryTable)
     const jiraLinks = getJiraLinks(jiraIssues, githubPRs);
-    console.log(jiraLinks)
     const githubLinks = getGithubLinks(jiraIssues, githubPRs);
-    console.log(githubLinks)
     const githubReleasesLink = getGithubReleasesLink(releaseVersion);
-    console.log(githubReleasesLink)
 
     // Create and replace placeholders in template
     setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
-    console.log(githubReleasesLink)
     copyTemplate(jiraProject);
-    console.log(jiraProject)
     replaceTemplatePlaceholders(answers);
-    console.log(answers)
 
     // Push feedback to console
     console.log(`${chalk.white('✔ Release notes created successfully!\n')}`);

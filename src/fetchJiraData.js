@@ -1,8 +1,3 @@
-/*
-Copyright © Adobe, Inc. All rights reserved.
-See COPYING.txt for license details.
-*/
-
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -29,8 +24,10 @@ const fetchJiraData = async url => {
       url: url,
       method: 'GET',
     })
-      .then(response => {
-        return response.json();
+      .then(async response => {
+        const responseText = await response.text();
+        const parsedResponse = JSON.parse(responseText);
+        return parsedResponse;
       })
       .then(({ issues }) => {
         return issues;
