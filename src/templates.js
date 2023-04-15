@@ -4,15 +4,19 @@ See COPYING.txt for license details.
 */
 
 import pkg from 'shelljs';
-const { cp, rm, sed } = pkg;
-import * as fs from 'fs';
-import * as path from 'path';
+const { cp, cd, ls, sed } = pkg;
+import { existsSync } from 'fs';
+import { dirname, join } from 'path';
 import chalk from "chalk";
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const changelog = 'CHANGELOG.md';
 
 export function copyTemplate(jiraProject) {
-  const templateDirectory = `./templates/${jiraProject.toLowerCase()}`;
+  const templateDirectory = `${join(__dirname, '../')}templates/${jiraProject.toLowerCase()}`;
   const currentDirectory = process.cwd();
   const changelogExists = fs.existsSync(path.join(currentDirectory, changelog));
   if (changelogExists) {
