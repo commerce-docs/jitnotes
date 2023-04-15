@@ -1,10 +1,20 @@
-# Releaser — A release notes generator
+# JitNotes — A release notes generator
 
-My goal is to morph this project into a simple CLI that asks questions and applies the answers to a Release Notes template to make the whole release notes process much less labor intensive. Currently, the scripts retrieve information from Jira and GitHub to generate a release notes markdown file with the following sections:
+This CLI fetches Jira tickets and finds the corresponding GitHub PRs to generate a release notes markdown file.
+The CLI asks you a series of questions that it uses to generate the release notes. The questions are:
+
+1. **Jira name** for project (PWA, USF, COMDOX).
+2. **Release version** number (Major.Minor.Patch).
+3. **Previous version** number (Major.Minor.Patch).
+4. **Type** of ticket to include (Story, Bug, etc.)
+5. **Status** of tickets to include (Open, In Progress, Done, etc.)
+6. **Start date** for including ticket statuses set on and after the date.
+7. **End date** for including ticket statues set on and before the date.
+
+The release notes template provides the following sections:
 
 - Highlights (Depends on entry of release notes for Epics. In progress.)
 - Summary table (Jira stories and bugs)
-- Documentation updates
 - Known Issues
 - Upgrading from previous versions
 - Update dependencies (which contains the dependencies table)
@@ -21,5 +31,4 @@ My goal is to morph this project into a simple CLI that asks questions and appli
     ```
 5. Run `yarn start`.
 
-This will generate a new CHANGELOG.md file in the project's root as well as print the output in the console.
-
+This will generate a new CHANGELOG.md file in the project's root.

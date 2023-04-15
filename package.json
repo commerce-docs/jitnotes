@@ -1,16 +1,15 @@
 {
-  "name": "gitnotes",
-  "version": "0.2.4",
-  "description": "A CLI tool to generate release notes for the PWA Jira project and GitHub repository.",
-  "repository": "https://github.com/commerce-docs/gitnotes.git",
-  "author": "Bruce Denham",
-  "bugs": {
-    "url": "https://github.com/commerce-docs/gitnotes/issues"
-  },
-  "homepage": "https://github.com/commerce-docs/gitnotes#readme",
-  "bin": "bin/index.js",
-  "license": "MIT",
+  "name": "jitnotes",
+  "version": "0.0.1",
+  "description": "CLI for generating release notes for Commerce Jira projects and GitHub repos.",
+  "repository": "https://github.com/commerce-docs/jitnotes.git",
+  "author": "Adobe, Inc., Commerce Docs, Bruce Denham",
+  "license": "osl-3.0",
+  "main": "index.js",
   "type": "module",
+  "bin": {
+    "jitnotes": "index.js"
+  },
   "scripts": {
     "start": "node bin/index.js"
   },
@@ -32,5 +31,8 @@
     "shelljs": "^0.8.5",
     "unified": "^10.1.2",
     "url": "^0.11.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
