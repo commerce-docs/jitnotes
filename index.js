@@ -29,17 +29,6 @@ console.log(
   chalk.green(textSync("JitNotes", { horizontalLayout: "fitted", font: "Standard" }))
 );
 
-console.log('\x1b[33m%s\x1b[0m',
-  `This CLI generates markdown text from the RELEASE NOTE field in Jira Story and Bug tickets.
-Links to the corresponding GitHub PRs for each Jira ticket are also included.
-
-The CLI retrieves Jira tickets based on the following JQL query criteria:
-
-1. Story and Bug tickets only are returned.
-2. Deployment Queue tickets only are returned.
-3. Start and end dates define the tickets returned for the release cycle.\n`
-);
-
 const start = async () => {
   try {
     const answers = await askQuestions();
