@@ -5,13 +5,15 @@ import fetch from "node-fetch";
 
 const fetchData = async ({ url, method }) => {
   try {
-    return await fetch(url, {
+    const fetchResponse = await fetch(url, {
       method: method,
       headers: {
-        Authorization: 'Basic ' + process.env.JIRA_AUTH,
+        Authorization: `Basic ${process.env.JIRA_AUTH}`,
         'Content-Type': 'application/json',
       },
     });
+
+    return fetchResponse.text();
 
   } catch (error) {
     console.error("Fetching JIRA issues failed:" + error);
@@ -25,13 +27,10 @@ const fetchJiraData = async url => {
       method: 'GET',
     })
       .then(async response => {
-        const responseText = await response.text();
-        const parsedResponse = await JSON.parse(responseText);
-        console.log(parsedResponse)
+        const parsedResponse = JSON.parse(response);
         return parsedResponse;
       })
       .then(({ issues }) => {
-        console.log(issues)
         return issues;
       });
   } catch (error) {

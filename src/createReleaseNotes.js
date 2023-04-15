@@ -204,7 +204,6 @@ export function getHighlights(jiraIssues, githubPRs) {
 
 export function getSummaryTable(jiraIssues, githubPRs) {
   const summaryTable = toMarkdown(createSummaryTable(jiraIssues, githubPRs), { extensions: [gfmTableToMarkdown()] });
-  console.log(summaryTable)
   return summaryTable;
 }
 
