@@ -1,6 +1,6 @@
 {
   "name": "releasit",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A CLI tool to generate release notes for the PWA Jira project and GitHub repository.",
   "repository": {
     "type": "git",

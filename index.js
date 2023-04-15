@@ -46,7 +46,9 @@ const start = async () => {
     const { jiraProject, releaseVersion, ticketStatus, startDate, endDate } = answers;
 
     const jiraReleaseQuery = escape(`project = ${jiraProject} AND issuetype != Task AND status = "${ticketStatus}" ORDER BY issuetype DESC`);
+    console.log(jiraReleaseQuery)
     const jiraAPI = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
+    console.log(jiraAPI)
 
     // Get Jira and GitHub data
     const jiraData = await fetchJiraData(jiraAPI);
