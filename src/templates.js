@@ -3,9 +3,9 @@ Copyright © Adobe, Inc. All rights reserved.
 See COPYING.txt for license details.
 */
 
-import pkg from 'shelljs';
-const { cp, cd, ls, sed } = pkg;
-import { existsSync } from 'fs';
+import shellPkg from 'shelljs';
+const { cp, cd, ls, rm, sed } = shellPkg;
+import * as fs from 'fs';
 import { dirname, join } from 'path';
 import chalk from "chalk";
 import { fileURLToPath } from 'url';
@@ -18,7 +18,7 @@ const changelog = 'CHANGELOG.md';
 export function copyTemplate(jiraProject) {
   const templateDirectory = `${join(__dirname, '../')}templates/${jiraProject.toLowerCase()}`;
   const currentDirectory = process.cwd();
-  const changelogExists = fs.existsSync(path.join(currentDirectory, changelog));
+  const changelogExists = fs.existsSync(join(currentDirectory, changelog));
   if (changelogExists) {
     rm(changelog);
   }
