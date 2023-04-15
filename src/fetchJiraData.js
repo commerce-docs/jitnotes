@@ -26,7 +26,6 @@ const fetchJiraData = async url => {
     })
       .then(async response => {
         const responseText = await response.text();
-        console.log(responseText)
         const parsedResponse = await JSON.parse(responseText);
         console.log(parsedResponse)
         return parsedResponse;
