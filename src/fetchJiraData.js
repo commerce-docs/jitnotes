@@ -26,10 +26,13 @@ const fetchJiraData = async url => {
     })
       .then(async response => {
         const responseText = await response.text();
-        const parsedResponse = JSON.parse(responseText);
+        console.log(responseText)
+        const parsedResponse = await JSON.parse(responseText);
+        console.log(parsedResponse)
         return parsedResponse;
       })
       .then(({ issues }) => {
+        console.log(issues)
         return issues;
       });
   } catch (error) {
