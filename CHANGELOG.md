@@ -6,16 +6,14 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights
 
-## Highlights\
-\
-*   MISSING JIRA RELEASE NOTE — [PWA-3067][]\
-*   Bug: [3969][] — The selected payment method now persists during the user session, when multiple payment methods are available.\
-*   MISSING JIRA RELEASE NOTE — [PWA-2980][]\
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
+*   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
 
 
 ## All changes
 
-| Type  | Description                                                                                                | GitHub PR                                      | Jira Issue   |
+| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
 | :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
 | Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
 | Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
@@ -50,7 +48,7 @@ With each new release of PWA Studio, we perform Lighthouse audits of four Venia 
 
 ## Known issue
 
-[ADD KNOWN ISSUES FOR THIS RELEASE]
+**_[ADD KNOWN ISSUES FOR THIS RELEASE]_**
 
 ## Upgrading from a previous version
 
@@ -68,7 +66,7 @@ The following table lists the latest versions of each package as of 13.1.0. The 
 **Note:**
 Your project may not depend on some packages listed in this table.
 
-[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]
+**_[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]_**
 
 | Package                                | Latest version |
 |----------------------------------------|----------------|
@@ -96,9 +94,9 @@ Your project may not depend on some packages listed in this table.
 | `upward-php`                           | 2.0.1          |
 
 
-[PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067\
-[PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985\
-[PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980\
+[PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067
+[PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985
+[PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980
 
 [4]: https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4
 [25]: https://github.com/magento-commerce/venia-sample-data-modules/pull/25

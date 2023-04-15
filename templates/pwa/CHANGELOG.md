@@ -40,7 +40,7 @@ With each new release of PWA Studio, we perform Lighthouse audits of four Venia 
 
 ## Known issue
 
-[ADD KNOWN ISSUES FOR THIS RELEASE]
+**_[ADD KNOWN ISSUES FOR THIS RELEASE]_**
 
 ## Upgrading from a previous version
 
@@ -58,7 +58,7 @@ The following table lists the latest versions of each package as of [RELEASEVERS
 **Note:**
 Your project may not depend on some packages listed in this table.
 
-[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]
+**_[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]_**
 
 | Package                                | Latest version |
 |----------------------------------------|----------------|

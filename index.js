@@ -5,7 +5,6 @@ dotenv.config();
 
 import chalk from 'chalk';
 import clear from "clear";
-import { writeFileSync } from 'fs';
 import { escape } from 'querystring';
 import askQuestions from './src/questions.js';
 import fetchJiraData from './src/fetchJiraData.js';
@@ -32,15 +31,13 @@ console.log(
 
 console.log('\x1b[33m%s\x1b[0m',
   `This CLI generates markdown text from the RELEASE NOTE field in Jira Story and Bug tickets.
-It also generates the corresponding GitHub PRs for each Story and Bug included in the release.
-The generated markdown is meant to be copied and pasted into the existing CHANGELOG.md file,
-to replace the highlights and tickets for the current release.
+Links to the corresponding GitHub PRs for each Jira ticket are also included.
 
 The CLI retrieves Jira tickets based on the following JQL query criteria:
 
-1. Only Story and Bug tickets are returned. Task tickets are not included.
-2. Only Deployment Queue tickets are returned. Tickets with a "Done" status are not included.
-3. Only tickets between the start and end dates are returned.\n`
+1. Story and Bug tickets only are returned.
+2. Deployment Queue tickets only are returned.
+3. Start and end dates define the tickets returned for the release cycle.\n`
 );
 
 const start = async () => {
@@ -70,15 +67,12 @@ const start = async () => {
     replaceTemplatePlaceholders(answers);
 
     // Push feedback to console
-    console.log(`${chalk.white('✔ Release notes created successfully!')}`);
-    console.log('\x1b[33m%s\x1b[0m', `View the CHANGELOG.md created in the root directory of this project.`);
-    console.log('\x1b[33m%s\x1b[0m', 'Output is also provided below:');
-
+    console.log(`${chalk.white('✔ Release notes created successfully!\n')}`);
   } catch (e) {
     console.log(`${chalk.red('Please correct the following errors noted above and try again.')}`);
     console.error(`${chalk.red(e)}`);
   } finally {
-    console.log(`${chalk.white('✔ End Release Notes CLI')}`);
+    console.log('\x1b[33m%s\x1b[0m', `View the new CHANGELOG.md in your current directory.\n`);
   }
 };
 

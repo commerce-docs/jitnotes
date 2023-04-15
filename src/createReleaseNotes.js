@@ -83,7 +83,7 @@ const createJiraLinkDefinitions = jiraIssues => {
       type: 'definition',
       identifier: jiraIssue.key,
       label: jiraIssue.key,
-      url: 'https://jira.corp.adobe.com/browse/' + jiraIssue.key,
+      url: `https://jira.corp.adobe.com/browse/${jiraIssue.key}`,
       title: null,
     };
   };
@@ -91,7 +91,7 @@ const createJiraLinkDefinitions = jiraIssues => {
   jiraIssues.map(jiraIssue => {
     const linkDefinition = createJiraLinkDefinition(jiraIssue);
     jiraLinkDefinitions.push(linkDefinition);
-    jiraLinkDefinitions.push(brk);
+    jiraLinkDefinitions.push(text('\n'));
   })
   return root({ type: 'paragraph', children: jiraLinkDefinitions })
 };
@@ -143,7 +143,7 @@ const createSummaryTable = jiraIssues => {
   const tableHeader = tableRow([
     tableCell([text('Type')]),
     tableCell([text('Description')]),
-    tableCell([text('GitHub PR')]),
+    tableCell([text('GitHub PR(s)')]),
     tableCell([text('Jira Issue')]),
   ]);
 
@@ -172,27 +172,27 @@ const createHighlights = (jiraIssues, githubPRs) => {
       highlights.push(list('unordered', [
         listItem([
           paragraph([
-            text(issuetype),
-            text(': '),
-            createGitHubLinkReference(prNumber),
-            text(' — '),
             text(releaseNotes),
+            text(' (GitHub PR: '),
+            createGitHubLinkReference(prNumber),
+            text(')'),
           ])
         ])
       ]));
+      highlights.push(text('\n'));
     } else {
       highlights.push(list('unordered', [
         listItem([
           paragraph([
-            text('MISSING JIRA RELEASE NOTE'),
-            text(' — '),
+            text('ADD MISSING RELEASE NOTE ENTRY HERE --> '),
             createJiraLinkReference(key)
           ])
         ])]));
+      highlights.push(text('\n'));
     }
   })
 
-  return root({ type: 'paragraph', children: highlights, })
+  return root({ type: 'paragraph', children: highlights })
 };
 
 export function getHighlights(jiraIssues, githubPRs) {

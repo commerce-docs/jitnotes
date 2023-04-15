@@ -5,7 +5,8 @@ See COPYING.txt for license details.
 
 import pkg from 'shelljs';
 const { cp, rm, sed } = pkg;
-import { existsSync } from 'fs';
+import * as fs from 'fs';
+import * as path from 'path';
 import chalk from "chalk";
 
 const changelog = 'CHANGELOG.md';
@@ -18,7 +19,7 @@ export function copyTemplate(jiraProject) {
     rm(changelog);
   }
 
-  if (existsSync(templateDirectory)) {
+  if (fs.existsSync(templateDirectory)) {
     cp('-R', `${templateDirectory}/*`, currentDirectory);
     console.log(`${chalk.white('\n✔ Template copied.')}`);
   } else {
