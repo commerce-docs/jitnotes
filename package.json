@@ -1,6 +1,6 @@
 {
-  "name": "releaser",
-  "version": "1.0.0",
+  "name": "@devdocs/releaser",
+  "version": "1.0.1",
   "description": "A CLI tool to generate release notes for the PWA Jira project and GitHub repository.",
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/bdenham/releaser#readme",
   "main": "index.js",
   "bin": {
-    "releaser": "index.js"
+    "releaser": "./index.js"
   },
   "license": "MIT",
   "type": "module",
