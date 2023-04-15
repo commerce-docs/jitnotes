@@ -6,18 +6,18 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights
 
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE -- [PWA-3067][]
 *   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
 *   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
 
 
 ## All changes
 
-| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
-| :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
-| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
-| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
-| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                       | [PWA-2980][] |
+| Type  | Description                                                                                                | GitHub PR(s)                                  | Jira Issue   |
+|:------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------|--------------|
+| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][], | [PWA-3067][] |
+| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                      | [PWA-2985][] |
+| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                      | [PWA-2980][] |
 
 
 ## 13.1.0 Lighthouse scores
