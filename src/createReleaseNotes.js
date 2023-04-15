@@ -165,7 +165,6 @@ const createSummaryTable = jiraIssues => {
 
 const createHighlights = (jiraIssues, githubPRs) => {
   const highlights = [];
-  highlights.push(heading(2, text(`Highlights`)), brk, brk)
 
   jiraIssues.map(({ releaseNotes, issuetype, key, prNumber }) => {
     const prNumberLinks = createGitHubPrLinks(prNumber);
@@ -181,7 +180,6 @@ const createHighlights = (jiraIssues, githubPRs) => {
           ])
         ])
       ]));
-      highlights.push(brk)
     } else {
       highlights.push(list('unordered', [
         listItem([
@@ -191,7 +189,6 @@ const createHighlights = (jiraIssues, githubPRs) => {
             createJiraLinkReference(key)
           ])
         ])]));
-      highlights.push(brk)
     }
   })
 

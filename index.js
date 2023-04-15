@@ -21,8 +21,9 @@ import { getGithubReleasesLink } from './src/createReleaseNotes.js';
 
 import figletPkg from 'figlet';
 const { textSync } = figletPkg;
-import templates from './src/templates.js';
-import placeholders from './src/placeholders';
+import { copyTemplate } from './src/templates.js';
+import { replaceTemplatePlaceholders } from './src/templates.js';
+import { setupPlaceholders } from './src/placeholders.js';
 
 clear();
 console.log(
@@ -42,15 +43,13 @@ The CLI retrieves Jira tickets based on the following JQL query criteria:
 3. Only tickets between the start and end dates are returned.\n`
 );
 
-const start = async (jiraAPI) => {
+const start = async () => {
   try {
     const answers = await askQuestions();
-    const { jiraProject, releaseVersion, previousVersion, ticketStatus, startDate, endDate } = answers;
+    const { jiraProject, releaseVersion, ticketStatus, startDate, endDate } = answers;
 
     const jiraReleaseQuery = escape(`project = ${jiraProject} AND issuetype in (Story, Bug) AND status = "${ticketStatus}" ORDER BY issuetype DESC`);
     const jiraAPI = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
-
-    console.log(jiraAPI)
 
     // Get Jira and GitHub data
     const jiraData = await fetchJiraData(jiraAPI);
@@ -65,16 +64,15 @@ const start = async (jiraAPI) => {
     const githubLinks = getGithubLinks(jiraIssues, githubPRs);
     const githubReleasesLink = getGithubReleasesLink(releaseVersion);
 
+    // Create and replace placeholders in template
+    setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
+    copyTemplate(jiraProject);
+    replaceTemplatePlaceholders(answers);
 
-    placeholders.setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
-    templates.copyTemplate(jiraProject);
-    templates.replaceTemplatePlaceholders(answers);
-
+    // Push feedback to console
     console.log(`${chalk.white('✔ Release notes created successfully!')}`);
     console.log('\x1b[33m%s\x1b[0m', `View the CHANGELOG.md created in the root directory of this project.`);
     console.log('\x1b[33m%s\x1b[0m', 'Output is also provided below:');
-    console.log('\n');
-    console.log(releaseNotes);
 
   } catch (e) {
     console.log(`${chalk.red('Please correct the following errors noted above and try again.')}`);
@@ -82,13 +80,6 @@ const start = async (jiraAPI) => {
   } finally {
     console.log(`${chalk.white('✔ End Release Notes CLI')}`);
   }
-  // try {
-  //   writeFileSync('./CHANGELOG.md', releaseNotes);
-  // } catch (err) {
-  //   console.error(err);
-  // }
-
-
 };
 
-start(jiraAPI);
+start();
