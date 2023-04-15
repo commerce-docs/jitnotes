@@ -1,28 +1,18 @@
 {
-  "name": "releasit",
+  "name": "gitnotes",
   "version": "0.2.4",
   "description": "A CLI tool to generate release notes for the PWA Jira project and GitHub repository.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bdenham/releaser.git"
-  },
-  "keywords": [
-    "CLI",
-    "Jira",
-    "GitHub",
-    "Release Notes"
-  ],
+  "repository": "https://github.com/commerce-docs/gitnotes.git",
   "author": "Bruce Denham",
   "bugs": {
-    "url": "https://github.com/bdenham/releaser/issues"
+    "url": "https://github.com/commerce-docs/gitnotes/issues"
   },
-  "homepage": "https://github.com/bdenham/releaser#readme",
-  "main": "index.js",
-  "bin": "./index.js",
+  "homepage": "https://github.com/commerce-docs/gitnotes#readme",
+  "bin": "bin/index.js",
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "start": "node index.js"
+    "start": "node bin/index.js"
   },
   "dependencies": {
     "chalk": "^5.2.0",

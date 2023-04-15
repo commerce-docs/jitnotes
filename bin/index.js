@@ -6,23 +6,23 @@ dotenv.config();
 import chalk from 'chalk';
 import clear from "clear";
 import { escape } from 'querystring';
-import askQuestions from './src/questions.js';
-import fetchJiraData from './src/fetchJiraData.js';
-import fetchGitHubData from './src/fetchGitHubData.js';
-import createJiraIssueObjects from './src/createJiraIssueObjects.js';
-import createGitHubPrObjects from './src/createGitHubPrObjects.js';
+import askQuestions from '../src/questions.js';
+import fetchJiraData from '../src/fetchJiraData.js';
+import fetchGitHubData from '../src/fetchGitHubData.js';
+import createJiraIssueObjects from '../src/createJiraIssueObjects.js';
+import createGitHubPrObjects from '../src/createGitHubPrObjects.js';
 
-import { getHighlights } from './src/createReleaseNotes.js';
-import { getSummaryTable } from './src/createReleaseNotes.js';
-import { getJiraLinks } from './src/createReleaseNotes.js';
-import { getGithubLinks } from './src/createReleaseNotes.js';
-import { getGithubReleasesLink } from './src/createReleaseNotes.js';
+import { getHighlights } from '../src/createReleaseNotes.js';
+import { getSummaryTable } from '../src/createReleaseNotes.js';
+import { getJiraLinks } from '../src/createReleaseNotes.js';
+import { getGithubLinks } from '../src/createReleaseNotes.js';
+import { getGithubReleasesLink } from '../src/createReleaseNotes.js';
 
 import figletPkg from 'figlet';
 const { textSync } = figletPkg;
-import { copyTemplate } from './src/templates.js';
-import { replaceTemplatePlaceholders } from './src/templates.js';
-import { setupPlaceholders } from './src/placeholders.js';
+import { copyTemplate } from '../src/templates.js';
+import { replaceTemplatePlaceholders } from '../src/templates.js';
+import { setupPlaceholders } from '../src/placeholders.js';
 
 clear();
 console.log(
