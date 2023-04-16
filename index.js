@@ -68,7 +68,7 @@ const start = async () => {
 
     // Push feedback to console
     console.log(`${chalk.white('✔ Jit notes created successfully!\n')}`);
-    console.log('\x1b[33m%s\x1b[0m', `View the new file:///CHANGELOG.md in your current directory.\n`);
+    console.log('\x1b[33m%s\x1b[0m', `View the new CHANGELOG.md in your current directory.\n`);
 
   } catch (e) {
     console.log(`${chalk.red('Please correct the following errors noted above and try again.')}`);
