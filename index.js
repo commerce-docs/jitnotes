@@ -71,7 +71,7 @@ const start = async () => {
     console.log('\x1b[33m%s\x1b[0m', `View the new CHANGELOG.md in your current directory.\n`);
 
   } catch (e) {
-    console.log(`${chalk.red('Please correct the following errors noted above and try again.')}`);
+    console.log(`${chalk.red('\nPlease correct the following code-related errors and try again.')}`);
     console.error(`${chalk.red(e)}`);
   } finally {
     console.log(`${chalk.white('✔ Exiting...\n')}`);

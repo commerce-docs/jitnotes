@@ -7,9 +7,7 @@
   "license": "osl3.0",
   "main": "index.js",
   "type": "module",
-  "bin": {
-    "jitnotes": "index.js"
-  },
+  "bin": "index.js",
   "scripts": {
     "start": "node index.js"
   },
@@ -35,5 +33,6 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
