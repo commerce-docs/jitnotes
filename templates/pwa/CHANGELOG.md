@@ -8,9 +8,17 @@ _For older release notes, see_ [PWA Studio releases][].
 
 [HIGHLIGHTS]
 
-## All changes
+## Code changes
 
 [SUMMARY_TABLE]
+
+## Documentation changes
+
+[DOCUMENTATION_CHANGES]
+
+## Known issues
+
+**[ADD KNOWN ANY ISSUES FOR THIS RELEASE]**
 
 ## [RELEASEVERSION] Lighthouse scores
 
@@ -38,10 +46,6 @@ With each new release of PWA Studio, we perform Lighthouse audits of four Venia 
 |            SEO |     ![](images/score_100.svg)     |      ![](images/score_100.svg)      |     ![](images/score_100.svg)      |     ![](images/score_100.svg)     |
 |            PWA |    ![](images/pwa_perfect.svg)    |    ![](images/pwa_imperfect.svg)    |   ![](images/pwa_imperfect.svg)    |    ![](images/pwa_perfect.svg)    |
 
-## Known issue
-
-**_[ADD KNOWN ISSUES FOR THIS RELEASE]_**
-
 ## Upgrading from a previous version
 
 Use the steps outlined in this section to update your [scaffolded project][] from [PREVIOUSVERSION] to [RELEASEVERSION].
@@ -55,10 +59,10 @@ See [Upgrading versions][] for more information about upgrading between PWA Stud
 Open your `package.json` file and update the PWA Studio package dependencies to the versions associated with this release.
 The following table lists the latest versions of each package as of [RELEASEVERSION]. The **bolded** versions with an asterisk (*) are the packages that were updated from PWA Studio [PREVIOUSVERSION].
 
-**Note:**
+**NOTE:**
 Your project may not depend on some packages listed in this table.
 
-**_[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]_**
+**[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]**
 
 | Package                                | Latest version |
 |----------------------------------------|----------------|
