@@ -24,18 +24,29 @@ import { copyTemplate } from './src/templates.js';
 import { replaceTemplatePlaceholders } from './src/templates.js';
 import { setupPlaceholders } from './src/placeholders.js';
 
+import { Spinner } from 'cli-spinner';
+const spinner = new Spinner(`${chalk.yellow('Processing.. %s')}`);
+// spinner.setSpinnerString('|/-\\');
+// spinner.setSpinnerString('⣾⣽⣻⢿⡿⣟⣯⣷');
+spinner.setSpinnerString('⣾⣽⣻⢿⡿⣟⣯⣷');
+
 clear();
 console.log(
-  chalk.green(textSync("JitNotes", { horizontalLayout: "fitted", font: "Standard" }))
+  chalk.yellow(textSync("Jit Notes!", { horizontalLayout: "fitted", font: "Standard" }))
 );
+
+console.log(chalk.green(`Linking Jira tickets with GitHub PRs to show you
+the whole development story. Let's get started!\n`));
 
 const start = async () => {
   try {
     const answers = await askQuestions();
     const { jiraProject, releaseVersion, ticketStatus, startDate, endDate } = answers;
+    console.log("");
+    spinner.start();
 
-    const jiraReleaseQuery = escape(`project=${jiraProject} AND issuetype!=Task AND status="${ticketStatus}" ORDER BY issuetype DESC`);
-    const jiraAPI = `https://jira.dev.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
+    const jiraReleaseQuery = escape(`project = ${jiraProject} AND issuetype != Task AND status = "${ticketStatus}" ORDER BY issuetype DESC`);
+    const jiraAPI = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
 
     // Get Jira and GitHub data
     const jiraData = await fetchJiraData(jiraAPI);
@@ -56,14 +67,15 @@ const start = async () => {
     replaceTemplatePlaceholders(answers);
 
     // Push feedback to console
-    console.log(`${chalk.white('✔ Release notes created successfully!\n')}`);
-    console.log('\x1b[33m%s\x1b[0m', `View the new CHANGELOG.md in your current directory.\n`);
+    console.log(`${chalk.white('✔ Jit notes created successfully!\n')}`);
+    console.log('\x1b[33m%s\x1b[0m', `View the new file:///CHANGELOG.md in your current directory.\n`);
 
   } catch (e) {
     console.log(`${chalk.red('Please correct the following errors noted above and try again.')}`);
     console.error(`${chalk.red(e)}`);
   } finally {
-    console.log(`${chalk.white('✔ Exiting...')}`);
+    console.log(`${chalk.white('✔ Exiting...\n')}`);
+    spinner.stop(true);
   }
 };
 

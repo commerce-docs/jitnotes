@@ -41,7 +41,7 @@ export default function askQuestions() {
       name: 'ticketStatus',
       type: 'list',
       message: chalk.green(`Choose the ${chalk.yellow('status')} of the tickets to include:`),
-      choices: ['Deployment Queue', 'Done'],
+      choices: ['Deployment Queue'],
       default: 'Deployment Queue',
     },
     {
@@ -54,7 +54,7 @@ export default function askQuestions() {
     {
       name: 'endDate',
       type: 'input',
-      message: chalk.green(`Enter the ${chalk.yellow('end date')} after which tickets are be excluded (YYYY-MM-DD):`),
+      message: chalk.green(`Enter the ${chalk.yellow('end date')} after which tickets are excluded (YYYY-MM-DD):`),
       default: '2023-12-31',
       validate: thisAnswer => validDates.test(thisAnswer) ? true : 'Please use a valid date: YYYY-MM-DD.',
     },

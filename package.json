@@ -3,19 +3,18 @@
   "version": "0.0.1",
   "description": "CLI for generating release notes for Commerce Jira projects and GitHub repos.",
   "repository": "https://github.com/commerce-docs/jitnotes.git",
-  "author": "Adobe, Inc., Commerce Docs, Bruce Denham",
-  "license": "osl-3.0",
+  "author": "Adobe, Inc., Commerce Docs team, Bruce Denham",
+  "license": "osl3.0",
   "main": "index.js",
   "type": "module",
-  "bin": {
-    "jitnotes": "index.js"
-  },
+  "bin": "index.js",
   "scripts": {
-    "start": "node bin/index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "chalk": "^5.2.0",
     "clear": "^0.1.0",
+    "cli-spinner": "^0.2.10",
     "dotenv": "^16.0.3",
     "figlet": "^1.6.0",
     "inquirer": "^9.1.5",

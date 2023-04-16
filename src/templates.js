@@ -27,7 +27,7 @@ export function copyTemplate(jiraProject) {
 
   if (fs.existsSync(templateDirectory)) {
     cp('-R', `${templateDirectory}/*`, currentDirectory);
-    console.log(`${chalk.white('\n✔ Template copied.')}`);
+    console.log(`${chalk.white('\n\n✔ Template copied.')}`);
   } else {
     console.error('\nThe requested template was not found.');
     process.exit(1);

@@ -6,28 +6,18 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights
 
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2640][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2482][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2813][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2814][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2969][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2646][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2899][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2982][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
+*   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
 
 
 ## All changes
 
-| Type  | Description                                                                                 | GitHub PR(s) | Jira Issue   |
-| :---- | :------------------------------------------------------------------------------------------ | :----------- | ------------ |
-| Story | \[Issue] AC-3522::Product search result with items count is not being read by screen reader | [3891][]     | [PWA-2640][] |
-| Story | Configurable product with Out of Stock variations                                           | [3903][]     | [PWA-2482][] |
-| Story | \[Issue] AC-2791::Current state of custom controls not announced. (Shopping Bag)            | [3792][]     | [PWA-2813][] |
-| Story | \[Issue] AC-2493::Items within actions menu are not operable for keyboard-only…             | [3791][]     | [PWA-2814][] |
-| Bug   | \[Issue] Logo misses required alt property for image                                        | [3936][]     | [PWA-2969][] |
-| Bug   | \[Issue] Fix typo in component import name; consolidate import                              | [3648][]     | [PWA-2646][] |
-| Bug   | \[bug]: Certain talons and hooks cannot be wrapped                                          | [3874][]     | [PWA-2899][] |
-| Bug   | \[bug]: Watch command failing during the compilation process initiated by docker            | [3955][]     | [PWA-2982][] |
+| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
+| :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
+| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
+| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
+| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                       | [PWA-2980][] |
 
 
 ## 13.1.0 Lighthouse scores
@@ -104,22 +94,17 @@ Your project may not depend on some packages listed in this table.
 | `upward-php`                           | 2.0.1          |
 
 
-[PWA-2640]: https://jira.corp.adobe.com/browse/PWA-2640
-[PWA-2482]: https://jira.corp.adobe.com/browse/PWA-2482
-[PWA-2813]: https://jira.corp.adobe.com/browse/PWA-2813
-[PWA-2814]: https://jira.corp.adobe.com/browse/PWA-2814
-[PWA-2969]: https://jira.corp.adobe.com/browse/PWA-2969
-[PWA-2646]: https://jira.corp.adobe.com/browse/PWA-2646
-[PWA-2899]: https://jira.corp.adobe.com/browse/PWA-2899
-[PWA-2982]: https://jira.corp.adobe.com/browse/PWA-2982
+[PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067
+[PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985
+[PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980
 
-[3891]: https://github.com/magento/pwa-studio/pull/3891
-[3903]: https://github.com/magento/pwa-studio/pull/3903
-[3792]: https://github.com/magento/pwa-studio/pull/3792
-[3791]: https://github.com/magento/pwa-studio/pull/3791
-[3936]: https://github.com/magento/pwa-studio/pull/3936
-[3648]: https://github.com/magento/pwa-studio/pull/3648
-[3874]: https://github.com/magento/pwa-studio/pull/3874
-[3955]: https://github.com/magento/pwa-studio/pull/3955
+[4]: https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4
+[25]: https://github.com/magento-commerce/venia-sample-data-modules/pull/25
+[34]: https://github.com/magento-commerce/magento2-pwa/pull/34
+[5]: https://github.com/magento-commerce/magento2-pwa-commerce/pull/5
+[20]: https://github.com/magento-commerce/magento2-upward-connector/pull/20
+[10]: https://github.com/magento-commerce/upward-php/pull/10
+[3969]: https://github.com/magento/pwa-studio/pull/3969
+[4083]: https://github.com/magento/pwa-studio/pull/4083
 
 [PWA Studio releases]: https://github.com/magento/pwa-studio/releases
