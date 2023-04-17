@@ -9,8 +9,8 @@ The CLI asks you a series of questions that it uses to generate the release note
 3. **Previous version** number (Major.Minor.Patch).
 4. **Type** of ticket to include (Story, Bug, etc.)
 5. **Status** of tickets to include (Open, In Progress, Done, etc.)
-6. **Start date** for including ticket statuses set on and after the date.
-7. **End date** for including ticket statues set on and before the date.
+6. **Start date** for including GitHub PRs merged on and after the date.
+7. **End date** for including GitHub PRs merged on and before the date.
 8. **JIRA API token** for fetching the tickets that match the criteria.
 9. **GitHub API token** for fetching the PRs that correspond to the tickets.
 
@@ -43,7 +43,9 @@ To run this CLI, you need the following access tokens for Jira and GitHub:
 
 The CLI will generate a new `CHANGELOG.md` file in the current directory.
 
-## Future features
+## Future features (contributions welcome!)
+
+If you'd like to help with any of these future features, please open a PR. We'd love to have your help!
 
 - [ ] Add support for different projects.
 - [ ] Add support for different release notes templates.
@@ -53,7 +55,5 @@ The CLI will generate a new `CHANGELOG.md` file in the current directory.
 - [ ] Add support for auto-generating Known Issues.
 - [ ] Add support for auto-generating Lighthouse scores.
 - [ ] Add support for auto-generating package dependency table.
-
-## Contributions welcome!
 
 If you have any questions or suggestions, please [open an issue](https://github.com/AdobeDocs/jitnotes/issues).

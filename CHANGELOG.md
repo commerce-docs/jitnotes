@@ -6,19 +6,55 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights
 
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE -->  (GitHub PR: [10][])[PWA-3067][]
 *   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE -->  (GitHub PR: [4083][])[PWA-2980][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
 
 
-## All changes
+## Code changes
 
-| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
-| :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
-| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
-| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
-| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                       | [PWA-2980][] |
+| Type  | Description                                                                                                | GitHub PR(s) | Jira Issue   |
+| :---- | :--------------------------------------------------------------------------------------------------------- | :----------- | ------------ |
+| Story | Support PHP 8.2 for all PWA related repos                                                                  | [10][]       | [PWA-3067][] |
+| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]     | [PWA-2985][] |
+| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]     | [PWA-2980][] |
+|       | DONT MERGE TEST  PR                                                                                        |              | [][]         |
+|       | Added release notes                                                                                        |              | [][]         |
+|       | \[Bugfix] Add more context to product page view event                                                      |              | [][]         |
+|       | PWA-3052::Page Builder column-line content type is not supported, thi…                                     |              | [][]         |
+|       | BUG#-3064 When the button cancel beside create account is pressed by …                                     |              | [][]         |
+|       | PWA-3071::Graphql Cart > Prices > Discounts array also including Gift…                                     |              | [][]         |
+|       | Bug#pwa 3025                                                                                               |              | [][]         |
+|       | PWA-3049::\[PWA] Internal Page Builder links with query part                                               |              | [][]         |
+|       | Bug#pwa 3055 Homepage slider creates unexpected GET-requests                                               |              | [][]         |
+|       | PWA-3025:Clicking the Filters text label doesn't actually select the filter                                |              | [][]         |
+|       | Pwa 3065::When the button "sign in" is pressed by the keyboard, nothing happens.                           |              | [][]         |
+|       | BUG##PWA-3063 No proper screen reader announcements are for the optio…                                     |              | [][]         |
+|       | Pwa 3064 v2                                                                                                |              | [][]         |
+|       | Pwa 3064 v3                                                                                                |              | [][]         |
 
+
+## Documentation changes
+
+[DOCUMENTATION_CHANGES]
+
+## Known issues
+
+**[ADD KNOWN ANY ISSUES FOR THIS RELEASE]**
 
 ## 13.1.0 Lighthouse scores
 
@@ -46,10 +82,6 @@ With each new release of PWA Studio, we perform Lighthouse audits of four Venia 
 |            SEO |     ![](images/score_100.svg)     |      ![](images/score_100.svg)      |     ![](images/score_100.svg)      |     ![](images/score_100.svg)     |
 |            PWA |    ![](images/pwa_perfect.svg)    |    ![](images/pwa_imperfect.svg)    |   ![](images/pwa_imperfect.svg)    |    ![](images/pwa_perfect.svg)    |
 
-## Known issue
-
-**_[ADD KNOWN ISSUES FOR THIS RELEASE]_**
-
 ## Upgrading from a previous version
 
 Use the steps outlined in this section to update your [scaffolded project][] from 13.0.0 to 13.1.0.
@@ -63,10 +95,10 @@ See [Upgrading versions][] for more information about upgrading between PWA Stud
 Open your `package.json` file and update the PWA Studio package dependencies to the versions associated with this release.
 The following table lists the latest versions of each package as of 13.1.0. The **bolded** versions with an asterisk (*) are the packages that were updated from PWA Studio 13.0.0.
 
-**Note:**
+**NOTE:**
 Your project may not depend on some packages listed in this table.
 
-**_[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]_**
+**[UPDATE THIS TABLE WITH THE LATEST VERSIONS OF EACH PACKAGE]**
 
 | Package                                | Latest version |
 |----------------------------------------|----------------|
@@ -95,16 +127,43 @@ Your project may not depend on some packages listed in this table.
 
 
 [PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067
+
 [PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985
+
 [PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980
 
-[4]: https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4
-[25]: https://github.com/magento-commerce/venia-sample-data-modules/pull/25
-[34]: https://github.com/magento-commerce/magento2-pwa/pull/34
-[5]: https://github.com/magento-commerce/magento2-pwa-commerce/pull/5
-[20]: https://github.com/magento-commerce/magento2-upward-connector/pull/20
-[10]: https://github.com/magento-commerce/upward-php/pull/10
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[]: https://jira.corp.adobe.com/browse/undefined
+
+[10]: <https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4&#xD;&#xA;&#xD;&#xA;&#xD;&#xA;https://github.com/magento-commerce/venia-sample-data-modules/pull/25&#xD;&#xA;&#xD;&#xA;https://github.com/magento-commerce/magento2-pwa/pull/34&#xD;&#xA;&#xD;&#xA;https://github.com/magento-commerce/magento2-pwa-commerce/pull/5&#xD;&#xA;&#xD;&#xA;https://github.com/magento-commerce/magento2-upward-connector/pull/20&#xD;&#xA;&#xD;&#xA;https://github.com/magento-commerce/upward-php/pull/10>
+
 [3969]: https://github.com/magento/pwa-studio/pull/3969
+
 [4083]: https://github.com/magento/pwa-studio/pull/4083
 
-[PWA Studio releases]: https://github.com/magento/pwa-studio/releases
+[pwa studio releases]: https://github.com/magento/pwa-studio/releases
