@@ -35,6 +35,13 @@ The CLI requires Jira and GitHub access tokens. Follow the links below to reques
 - Jira API Access Token (see [JIRA API Account Access](https://wiki.corp.adobe.com/display/JIRA/API+Account+Access)).
 - GitHub Personal Access Token (see [Creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line)).
 
+After you get the tokens, you can either enter them in the CLI prompts or create an `.env` file in the directory where you run the CLI, using the following keys:
+
+```bash
+JIRA_TOKEN='your-jira-token'
+GITHUB_TOKEN='your-github-token'
+```
+
 ## Usage
 
 1. Open a terminal shell in your project directory.
