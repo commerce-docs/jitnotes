@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 /*
 Copyright © Adobe, Inc. All rights reserved.
 See COPYING.txt for license details.
