@@ -14,7 +14,7 @@ _For older release notes, see_ [PWA Studio releases][].
 
 ## Documentation changes
 
-[DOCUMENTATION_CHANGES]
+**[ADD DOCUMENTATION CHANGES AND ADDITIONS]**
 
 ## Known issues
 

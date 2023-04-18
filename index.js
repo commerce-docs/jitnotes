@@ -26,28 +26,28 @@ import { Spinner } from 'cli-spinner';
 const spinner = new Spinner(`${chalk.yellow('Processing.. %s')}`);
 spinner.setSpinnerString('⣾⣽⣻⢿⡿⣟⣯⣷');
 
+// Clear console and show welcome message
 clear();
-console.log(
-  chalk.yellow(textSync("Jit Notes!", { horizontalLayout: "fitted", font: "Standard" }))
-);
-
+console.log(chalk.yellow(textSync("Jit Notes!", { horizontalLayout: "fitted", font: "Standard" })));
 console.log(chalk.green(`Linking Jira tickets with GitHub PRs to show you
 the whole development story. Let's get started!\n`));
 
 const start = async () => {
   try {
+    // Ask relevant questions
     const answers = await askQuestions();
     const { jiraProject, githubRepo, releaseVersion, ticketStatus, startDate, endDate, jiraToken, githubToken } = answers;
     console.log("");
     spinner.start();
 
+    // Create Jira and GitHub API URLs
     const jiraReleaseQuery = escape(`project = ${jiraProject} AND issuetype != Task AND status = "${ticketStatus}" ORDER BY issuetype DESC`);
     const jiraUrl = `https://jira.corp.adobe.com/rest/api/2/search?jql=${jiraReleaseQuery}&maxResults=150`;
     const githubUrl = `https://api.github.com/search/issues?q=repo:${githubRepo}+is:pr+is:merged+merged:${startDate}..${endDate}&sort=created&order=asc`;
 
     // Get Jira and GitHub data
-    const githubData = await fetchData(githubUrl, process.env.GITHUB_TOKEN || githubToken, 'github');
     const jiraData = await fetchData(jiraUrl, process.env.JIRA_TOKEN || jiraToken, 'jira');
+    const githubData = await fetchData(githubUrl, process.env.GITHUB_TOKEN || githubToken, 'github');
     const jiraIssues = await extractContent(jiraData, 'jira');
     const githubPRs = await extractContent(githubData, 'github');
 
@@ -58,7 +58,7 @@ const start = async () => {
     const githubLinks = getGithubLinks(jiraIssues, githubPRs);
     const githubReleasesLink = getGithubReleasesLink(releaseVersion);
 
-    // Create and replace placeholders in template
+    // Replace placeholders in template
     setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
     copyTemplate(jiraProject);
     replaceTemplatePlaceholders(answers);

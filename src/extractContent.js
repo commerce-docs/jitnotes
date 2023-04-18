@@ -5,8 +5,6 @@ Copyright © Adobe, Inc. All rights reserved.
 See COPYING.txt for license details.
 */
 
-const keyContent = [];
-
 const getLabels = labels => labels.map(({ name }) => name);
 
 function getPrNumber(prUrl) {
@@ -53,7 +51,7 @@ const config = {
 const extractContent = async (data, type) => {
   data = await data;
   const { content } = config[type];
-  keyContent.push(...data.map(content));
+  const keyContent = data.map(content);
   return keyContent;
 };
 

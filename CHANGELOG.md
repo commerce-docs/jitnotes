@@ -9,48 +9,20 @@ _For older release notes, see_ [PWA Studio releases][].
 *   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
 *   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
 *   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [][]
 
 
 ## Code changes
 
-| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
-| :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
-| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
-| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
-| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                       | [PWA-2980][] |
-|       | DONT MERGE TEST  PR                                                                                        | [4013][]                                       | [][]         |
-|       | Added release notes                                                                                        | [4015][]                                       | [][]         |
-|       | \[Bugfix] Add more context to product page view event                                                      | [4025][]                                       | [][]         |
-|       | PWA-3052::Page Builder column-line content type is not supported, thi…                                     | [4028][]                                       | [][]         |
-|       | BUG#-3064 When the button cancel beside create account is pressed by …                                     | [4049][]                                       | [][]         |
-|       | PWA-3071::Graphql Cart > Prices > Discounts array also including Gift…                                     | [4052][]                                       | [][]         |
-|       | Bug#pwa 3025                                                                                               | [4053][]                                       | [][]         |
-|       | PWA-3049::\[PWA] Internal Page Builder links with query part                                               | [4059][]                                       | [][]         |
-|       | Bug#pwa 3055 Homepage slider creates unexpected GET-requests                                               | [4061][]                                       | [][]         |
-|       | PWA-3025:Clicking the Filters text label doesn't actually select the filter                                | [4063][]                                       | [][]         |
-|       | Pwa 3065::When the button "sign in" is pressed by the keyboard, nothing happens.                           | [4064][]                                       | [][]         |
-|       | BUG##PWA-3063 No proper screen reader announcements are for the optio…                                     | [4066][]                                       | [][]         |
-|       | Pwa 3064 v2                                                                                                | [4067][]                                       | [][]         |
-|       | Pwa 3064 v3                                                                                                | [4069][]                                       | [][]         |
+| Type  | Description                                                                                                | GitHub PR(s)                                  | Jira Issue   |
+|:------|:-----------------------------------------------------------------------------------------------------------|:----------------------------------------------|--------------|
+| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][], | [PWA-3067][] |
+| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                      | [PWA-2985][] |
+| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                      | [PWA-2980][] |
 
 
 ## Documentation changes
 
-[DOCUMENTATION_CHANGES]
+**[ADD DOCUMENTATION CHANGES AND ADDITIONS]**
 
 ## Known issues
 
@@ -129,20 +101,6 @@ Your project may not depend on some packages listed in this table.
 [PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067
 [PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985
 [PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
-[]: https://jira.corp.adobe.com/browse/undefined
 
 [4]: https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4
 [25]: https://github.com/magento-commerce/venia-sample-data-modules/pull/25
@@ -152,19 +110,5 @@ Your project may not depend on some packages listed in this table.
 [10]: https://github.com/magento-commerce/upward-php/pull/10
 [3969]: https://github.com/magento/pwa-studio/pull/3969
 [4083]: https://github.com/magento/pwa-studio/pull/4083
-[4013]: <>
-[4015]: <>
-[4025]: <>
-[4028]: <>
-[4049]: <>
-[4052]: <>
-[4053]: <>
-[4059]: <>
-[4061]: <>
-[4063]: <>
-[4064]: <>
-[4066]: <>
-[4067]: <>
-[4069]: <>
 
 [PWA Studio releases]: https://github.com/magento/pwa-studio/releases
