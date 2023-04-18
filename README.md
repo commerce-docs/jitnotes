@@ -41,7 +41,6 @@ After you get the tokens, you can either enter them in the CLI prompts or create
 JIRA_TOKEN='your-jira-token'
 GITHUB_TOKEN='your-github-token'
 ```
-
 ## Usage
 
 1. Open a terminal shell in your project directory.
