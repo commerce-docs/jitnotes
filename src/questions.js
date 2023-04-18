@@ -69,12 +69,12 @@ export default function askQuestions() {
     {
       name: 'jiraToken',
       type: 'input',
-      message: chalk.green(`Enter your ${chalk.yellow('Jira API token')}:`),
+      message: chalk.green(`Enter your ${chalk.yellow('Jira API token')} (Leave blank if using an .env file):`),
     },
     {
       name: 'githubToken',
       type: 'input',
-      message: chalk.green(`Enter your ${chalk.yellow('GitHub Access token')}:`),
+      message: chalk.green(`Enter your ${chalk.yellow('GitHub Access token')} (Leave blank if using an .env file):`),
     },
   ];
   return inquirer.prompt(questions);

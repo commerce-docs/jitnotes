@@ -20,7 +20,6 @@ const fetchData = async (url, token, type) => {
     if (type !== 'github' && type !== 'jira') {
       throw new Error(`Invalid request type: ${type}`);
     }
-    console.log(url, headers)
     const response = await fetch(url, {
       method: 'GET',
       headers,

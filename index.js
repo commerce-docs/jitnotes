@@ -37,7 +37,7 @@ the whole development story. Let's get started!\n`));
 const start = async () => {
   try {
     const answers = await askQuestions();
-    const { jiraProject, releaseVersion, ticketStatus, startDate, endDate, githubRepo, githubToken, jiraToken } = answers;
+    const { jiraProject, githubRepo, releaseVersion, ticketStatus, startDate, endDate, jiraToken, githubToken } = answers;
     console.log("");
     spinner.start();
 
@@ -46,8 +46,8 @@ const start = async () => {
     const githubUrl = `https://api.github.com/search/issues?q=repo:${githubRepo}+is:pr+is:merged+merged:${startDate}..${endDate}&sort=created&order=asc`;
 
     // Get Jira and GitHub data
-    const githubData = await fetchData(githubUrl, process.env.GITHUB_API_TOKEN, 'github');
-    const jiraData = await fetchData(jiraUrl, process.env.JIRA_AUTH, 'jira');
+    const githubData = await fetchData(githubUrl, process.env.GITHUB_TOKEN || githubToken, 'github');
+    const jiraData = await fetchData(jiraUrl, process.env.JIRA_TOKEN || jiraToken, 'jira');
     const jiraIssues = await extractContent(jiraData, 'jira');
     const githubPRs = await extractContent(githubData, 'github');
 

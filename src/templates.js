@@ -6,7 +6,7 @@ See COPYING.txt for license details.
 */
 
 import shellPkg from 'shelljs';
-const { cp, cd, ls, rm, sed } = shellPkg;
+const { cp, rm, sed } = shellPkg;
 import * as fs from 'fs';
 import { dirname, join } from 'path';
 import chalk from "chalk";
