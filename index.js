@@ -36,7 +36,7 @@ const start = async () => {
   try {
     // Ask relevant questions
     const answers = await askQuestions();
-    const { jiraProject, githubRepo, releaseVersion, ticketStatus, startDate, endDate, jiraToken, githubToken } = answers;
+    const { jiraProject, githubRepo, ticketStatus, startDate, endDate, jiraToken, githubToken } = answers;
     console.log("");
     spinner.start();
 

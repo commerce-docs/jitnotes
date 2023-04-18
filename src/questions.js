@@ -69,12 +69,18 @@ export default function askQuestions() {
     {
       name: 'jiraToken',
       type: 'input',
-      message: chalk.green(`Enter your ${chalk.yellow('Jira API token')} (Leave blank if using an .env file):`),
+      message: chalk.green(`Enter your ${chalk.yellow('Jira API token')} (Optional if using an .env file):`),
     },
     {
       name: 'githubToken',
       type: 'input',
-      message: chalk.green(`Enter your ${chalk.yellow('GitHub Access token')} (Leave blank if using an .env file):`),
+      message: chalk.green(`Enter your ${chalk.yellow('GitHub Access token')} (Optional if using an .env file):`),
+    },
+    {
+      name: 'connected',
+      type: 'confirm',
+      message: chalk.green(`Connected to the ${chalk.white('Adobe network?')} ${chalk.yellow('(Check before continuing)')}:`),
+      default: true,
     },
   ];
   return inquirer.prompt(questions);
