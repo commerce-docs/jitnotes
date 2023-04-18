@@ -53,7 +53,7 @@ The CLI creates a file called CHANGELOG.md in the directory where you run the co
 Please open a PR if you would like to help. I'd love to hear from you!
 
 - [ ] Add support for different projects.
-- [ ] Add support for different release notes templates.
+- [ ] Add more project release-notes templates.
 - [ ] Add support for different ticket types (include Tasks and others).
 - [ ] Add support for more than one ticket status (In Progress, In Review, Done, etc).
 - [ ] Add support for auto-generating Highlights from the release Epics (or by some other means).
