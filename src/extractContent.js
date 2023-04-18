@@ -5,7 +5,9 @@ Copyright © Adobe, Inc. All rights reserved.
 See COPYING.txt for license details.
 */
 
-const getLabels = labels => labels.map(({ name }) => name);
+function getLabels(labels) {
+  return labels.map(({ name }) => name);
+}
 
 function getPrNumber(prUrl) {
   if (prUrl == null) return '';
