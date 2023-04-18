@@ -34,7 +34,7 @@ export function copyTemplate(jiraProject) {
   }
 }
 
-export function replaceTemplatePlaceholders(answers) {
+export function replacePlaceholders(answers) {
   const questionAnswers = Object.entries(answers);
   for (const [questionName, answer] of questionAnswers) {
     const placeholder = new RegExp(`\\[${questionName.toUpperCase()}\\]`, "g");

@@ -10,17 +10,17 @@ import askQuestions from './src/questions.js';
 import fetchData from './src/fetchData.js';
 import extractContent from './src/extractContent.js';
 
-import { getHighlights } from './src/createReleaseNotes.js';
-import { getSummaryTable } from './src/createReleaseNotes.js';
-import { getJiraLinks } from './src/createReleaseNotes.js';
-import { getGithubLinks } from './src/createReleaseNotes.js';
-import { getGithubReleasesLink } from './src/createReleaseNotes.js';
+import { getHighlights } from './src/createJitNotes.js';
+import { getSummaryTable } from './src/createJitNotes.js';
+import { getJiraLinks } from './src/createJitNotes.js';
+import { getPrLinks } from './src/createJitNotes.js';
+import { getRepoLink } from './src/createJitNotes.js';
 
 import figletPkg from 'figlet';
 const { textSync } = figletPkg;
 import { copyTemplate } from './src/templates.js';
-import { replaceTemplatePlaceholders } from './src/templates.js';
-import { setupPlaceholders } from './src/placeholders.js';
+import { createPlaceholders } from './src/placeholders.js';
+import { replacePlaceholders } from './src/templates.js';
 
 import { Spinner } from 'cli-spinner';
 const spinner = new Spinner(`${chalk.yellow('Processing.. %s')}`);
@@ -55,13 +55,13 @@ const start = async () => {
     const highlights = getHighlights(jiraIssues, githubPRs);
     const summaryTable = getSummaryTable(jiraIssues, githubPRs);
     const jiraLinks = getJiraLinks(jiraIssues, githubPRs);
-    const githubLinks = getGithubLinks(jiraIssues, githubPRs);
-    const githubReleasesLink = getGithubReleasesLink(releaseVersion);
+    const githubLinks = getPrLinks(jiraIssues, githubPRs);
+    const githubReleasesLink = getRepoLink(githubRepo);
 
     // Replace placeholders in template
-    setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
+    createPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink);
     copyTemplate(jiraProject);
-    replaceTemplatePlaceholders(answers);
+    replacePlaceholders(answers);
 
     // Push feedback to console
     console.log(`${chalk.white('✔ Jit notes created successfully!\n')}`);

@@ -5,7 +5,7 @@ Copyright © Adobe, Inc. All rights reserved.
 See COPYING.txt for license details.
 */
 
-export function setupPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink) {
+export function createPlaceholders(answers, highlights, summaryTable, jiraLinks, githubLinks, githubReleasesLink) {
     answers.HIGHLIGHTS = highlights;
     answers.SUMMARY_TABLE = summaryTable;
     answers.JIRA_LINKS = jiraLinks;

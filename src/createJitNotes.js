@@ -20,14 +20,14 @@ import {
 import { unified } from "unified";
 import stringify from "remark-stringify";
 
-function createGitHubPrLinks(prNumber) {
-  const ghLinkReferences = [];
-  const githubLinkReference = createGitHubLinkReference(prNumber);
+function createPrLinks(prNumber) {
+  const prLinks = [];
+  const prLinkRef = createPrLinkRef(prNumber);
 
-  if (githubLinkReference.identifier.toString().includes(',')) {
-    const linkReferences = githubLinkReference.identifier.toString().split(',');
-    linkReferences.forEach(prNum => {
-      ghLinkReferences.push({
+  if (prLinkRef.identifier.toString().includes(',')) {
+    const linkRefs = prLinkRef.identifier.toString().split(',');
+    linkRefs.forEach(prNum => {
+      prLinks.push({
         type: 'linkReference',
         identifier: prNum,
         label: prNum,
@@ -36,23 +36,23 @@ function createGitHubPrLinks(prNumber) {
       }, text(', '));
     });
   } else {
-    ghLinkReferences.push(githubLinkReference);
+    prLinks.push(prLinkRef);
   }
-  return ghLinkReferences;
+  return prLinks;
 }
 
-const createLinkToGitHubReleases = () => {
+const createRepoReleasesLink = (githubRepo) => {
   return {
     type: 'definition',
     identifier: 'pwa studio releases',
     label: 'PWA Studio releases',
-    url: 'https://github.com/magento/pwa-studio/releases',
+    url: `https://github.com/${githubRepo}/releases`,
     title: null,
   }
 }
 
 // Jira ticket reference links for the summary table
-const createJiraLinkReference = ticketNumber => {
+const createJiraLinkRef = ticketNumber => {
   return ({
     type: 'linkReference',
     identifier: ticketNumber,
@@ -63,7 +63,7 @@ const createJiraLinkReference = ticketNumber => {
 };
 
 // GitHub PR reference links for the summary table
-function createGitHubLinkReference(prNumber) {
+function createPrLinkRef(prNumber) {
   return {
     type: 'linkReference',
     identifier: prNumber,
@@ -74,9 +74,9 @@ function createGitHubLinkReference(prNumber) {
 }
 
 const createJiraLinkDefinitions = jiraIssues => {
-  const jiraLinkDefinitions = [];
+  const jiraLinkDefs = [];
 
-  const createJiraLinkDefinition = (jiraIssue) => {
+  const createJiraLinkDef = (jiraIssue) => {
     if (!jiraIssue)
       return text('');
 
@@ -90,17 +90,17 @@ const createJiraLinkDefinitions = jiraIssues => {
   };
 
   jiraIssues.map(jiraIssue => {
-    const linkDefinition = createJiraLinkDefinition(jiraIssue);
-    jiraLinkDefinitions.push(linkDefinition);
-    jiraLinkDefinitions.push(text('\n'));
+    const linkDefinition = createJiraLinkDef(jiraIssue);
+    jiraLinkDefs.push(linkDefinition);
+    jiraLinkDefs.push(text('\n'));
   })
-  return root({ type: 'paragraph', children: jiraLinkDefinitions })
+  return root({ type: 'paragraph', children: jiraLinkDefs })
 };
 
-const createGithubLinkDefinitions = jiraIssues => {
-  const githubLinkDefinitions = [];
+const createPrLinkDefinitions = jiraIssues => {
+  const prLinkDefs = [];
 
-  const createGithubLinkDefinition = (jiraIssue) => {
+  const createPrLinkDef = (jiraIssue) => {
     if (!jiraIssue.prNumber)
       return text('');
     // If the jiraIssue has more than one associated PR, create a link for each PR
@@ -124,19 +124,19 @@ const createGithubLinkDefinitions = jiraIssues => {
   }
 
   jiraIssues.map(jiraIssue => {
-    const linkDefinitions = createGithubLinkDefinition(jiraIssue);
+    const linkDefinitions = createPrLinkDef(jiraIssue);
     if (linkDefinitions.type === undefined) {
       linkDefinitions.forEach(linkDefinition => {
-        githubLinkDefinitions.push(linkDefinition);
-        githubLinkDefinitions.push(text('\n'));
+        prLinkDefs.push(linkDefinition);
+        prLinkDefs.push(text('\n'));
       })
     } else {
-      githubLinkDefinitions.push(linkDefinitions);
-      githubLinkDefinitions.push(text('\n'));
+      prLinkDefs.push(linkDefinitions);
+      prLinkDefs.push(text('\n'));
     }
   })
 
-  return root({ type: 'paragraph', children: githubLinkDefinitions })
+  return root({ type: 'paragraph', children: prLinkDefs })
 };
 
 const createSummaryTable = jiraIssues => {
@@ -149,12 +149,12 @@ const createSummaryTable = jiraIssues => {
   ]);
 
   const createTableRow = ({ issuetype, key, prNumber, title }) => {
-    const ghLinkReferences = createGitHubPrLinks(prNumber);
-    const jiraLinkReference = createJiraLinkReference(key);
+    const prLinkReferences = createPrLinks(prNumber);
+    const jiraLinkReference = createJiraLinkRef(key);
     return tableRow([
       tableCell([text(issuetype)]),
       tableCell([text(title || '')]),
-      tableCell(ghLinkReferences),
+      tableCell(prLinkReferences),
       tableCell(jiraLinkReference),
     ]);
   };
@@ -167,15 +167,17 @@ const createSummaryTable = jiraIssues => {
 const createHighlights = (jiraIssues, githubPRs) => {
   const highlights = [];
 
+  //TODO: Use the githubPRs to create a list of PRs that don't have a Jira ticket
+  //TODO: Use issue type to create a list of issues that don't have a PR
   jiraIssues.map(({ releaseNotes, issuetype, key, prNumber }) => {
-    const prNumberLinks = createGitHubPrLinks(prNumber);
+    const prNumberLinks = createPrLinks(prNumber);
     if (releaseNotes) {
       highlights.push(list('unordered', [
         listItem([
           paragraph([
             text(releaseNotes),
             text(' (GitHub PR: '),
-            createGitHubLinkReference(prNumber),
+            createPrLinkRef(prNumber),
             text(')'),
           ])
         ])
@@ -186,7 +188,7 @@ const createHighlights = (jiraIssues, githubPRs) => {
         listItem([
           paragraph([
             text('ADD MISSING RELEASE NOTE ENTRY HERE --> '),
-            createJiraLinkReference(key)
+            createJiraLinkRef(key)
           ])
         ])]));
       highlights.push(text('\n'));
@@ -212,14 +214,14 @@ export function getJiraLinks(jiraIssues, githubPRs) {
   return jiraLinks;
 }
 
-export function getGithubLinks(jiraIssues, githubPRs) {
+export function getPrLinks(jiraIssues, githubPRs) {
   const processor = unified().use(stringify, {});
-  const githubLinks = processor.stringify(createGithubLinkDefinitions(jiraIssues, githubPRs));
-  return githubLinks;
+  const prLinks = processor.stringify(createPrLinkDefinitions(jiraIssues, githubPRs));
+  return prLinks;
 }
 
-export function getGithubReleasesLink(jiraIssues, githubPRs) {
+export function getRepoLink(githubRepo) {
   const processor = unified().use(stringify, {});
-  const githubReleasesLink = processor.stringify(createLinkToGitHubReleases(jiraIssues, githubPRs));
-  return githubReleasesLink;
+  const repoReleasesLink = processor.stringify(createRepoReleasesLink(githubRepo));
+  return repoReleasesLink;
 }
