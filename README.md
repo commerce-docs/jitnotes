@@ -1,4 +1,4 @@
-# JitNotes — A release notes generator
+# JitNotes — A template-based release notes generator
 
 This CLI retrieves key content from Jira tickets, finds all the corresponding GitHub PRs, and generates release notes from a markdown template.
 
