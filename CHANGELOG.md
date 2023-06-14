@@ -1,23 +1,65 @@
-# PWA Studio Release 13.1.0
+# PWA Studio Release 13.2.0
 
 **NOTE:**
-_This changelog only contains release notes for PWA Studio and Venia 13.1.0_
+_This changelog only contains release notes for PWA Studio and Venia 13.2.0_
 _For older release notes, see_ [PWA Studio releases][].
 
 ## Highlights
 
-*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3067][]
-*   The selected payment method now persists during the user session, when multiple payment methods are available. (GitHub PR: [3969][])
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3111][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3112][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3118][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3110][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3108][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3107][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3109][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3084][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3051][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3090][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3139][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3155][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3134][]
+*   The screen reader now reads the appropriate message as expected when a shopper clicks Return to  apply a gift card on the cart page without entering a gift card number. (GitHub PR: [4104][])
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3121][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3093][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3087][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3047][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3080][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3057][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-3029][]
 *   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2980][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2615][]
+*   ADD MISSING RELEASE NOTE ENTRY HERE --> [PWA-2967][]
 
 
 ## Code changes
 
-| Type  | Description                                                                                                | GitHub PR(s)                                   | Jira Issue   |
-| :---- | :--------------------------------------------------------------------------------------------------------- | :--------------------------------------------- | ------------ |
-| Story | Support PHP 8.2 for all PWA related repos                                                                  | [4][], [25][], [34][], [5][], [20][], [10][],  | [PWA-3067][] |
-| Bug   | \[bug]: Payment method always reverts to “Check / Money order” when there is an error with the transaction | [3969][]                                       | [PWA-2985][] |
-| Bug   | No results when filtering a category with a composite attribute from layered navigation                    | [4083][]                                       | [PWA-2980][] |
+| Type  | Description                                                                                                                                             | GitHub PR(s)         | Jira Issue   |
+| :---- | :------------------------------------------------------------------------------------------------------------------------------------------------------ | :------------------- | ------------ |
+| Story | The button seems to not be working with the keyboard. When the ENTER key is pressed, nothing is happening                                               | [4120][], [][],      | [PWA-3111][] |
+| Story | The link seems not to be working with the keyboard. When the ENTER key is pressed, nothing is happening                                                 | [4094][]             | [PWA-3112][] |
+| Story | Update eventing system to stay compatible with latest AEP schema                                                                                        | [4103][], [4086][],  | [PWA-3118][] |
+| Story | The button seems to not be working with the keyboard. When the ENTER key is pressed, nothing is happening                                               | [4112][]             | [PWA-3110][] |
+| Story | When the button "forget password" is pressed, there's no message to convey the information that the content has been refreshed for screen reader users. | [4092][]             | [PWA-3108][] |
+| Story | There's no message to inform the user the page refreshed its content by clicking/pressing either one of the 2 buttons.                                  | [4100][]             | [PWA-3107][] |
+| Story | The button seems to not be working with the keyboard. When the ENTER key is pressed, nothing is happening                                               | [4111][]             | [PWA-3109][] |
+| Story | \[Issue] Adding Dev Container config                                                                                                                    | [4040][]             | [PWA-3084][] |
+| Story | Update to latest @adobe/magento-storefront-event-collector                                                                                              | [4086][]             | [PWA-3051][] |
+| Bug   | \[bug]: Pagebuilder slider show white space when scrolling new slide for the first time                                                                 | [][]                 | [PWA-3090][] |
+| Bug   | Region is required in PWA although this option is disabled in Magento , and is not required on normal storefront .                                      | [4124][]             | [PWA-3139][] |
+| Bug   | Magento2 Backend URL                                                                                                                                    | [4123][], [134][],   | [PWA-3155][] |
+| Bug   | The 'signout' event is not captured                                                                                                                     | [4121][]             | [PWA-3134][] |
+| Bug   | System does not read displayed error message for accessibil users, if User press Return Button with blank Gift card number                              | [4104][]             | [PWA-3122][] |
+| Bug   | system is getting crashed with unexpected error when pressed Retrun button with invalid Gift card number                                                | [4104][]             | [PWA-3121][] |
+| Bug   | Url Rewrite to external URL does not work on PWA                                                                                                        | [4109][], [8110][],  | [PWA-3093][] |
+| Bug   | PWA shows 404 when having store code in URL                                                                                                             | [4114][]             | [PWA-3087][] |
+| Bug   | \[bug]: PWA Scaffolding Tool uses old version                                                                                                           | [4118][]             | [PWA-3047][] |
+| Bug   | \[bug]: When you click on Thumbnail, Add to cart works                                                                                                  | [4102][]             | [PWA-3080][] |
+| Bug   | \[bug]: Search auto populate results not accessible with tab or up/down keys.                                                                           | [4060][]             | [PWA-3057][] |
+| Bug   | \[bug]: Selecting payment method causing graphql error                                                                                                  | [4115][], [][],      | [PWA-3029][] |
+| Bug   | No results when filtering a category with a composite attribute from layered navigation                                                                 | [4083][]             | [PWA-2980][] |
+| Bug   | Venia header/layout broken in offline mode                                                                                                              | [4075][]             | [PWA-2615][] |
+| Bug   | \[bug]: useLink operations empty object destructuring                                                                                                   | [4084][]             | [PWA-2967][] |
 
 
 ## Documentation changes
@@ -28,9 +70,9 @@ _For older release notes, see_ [PWA Studio releases][].
 
 **[ADD KNOWN ANY ISSUES FOR THIS RELEASE]**
 
-## 13.1.0 Lighthouse scores
+## 13.2.0 Lighthouse scores
 
-With each new release of PWA Studio, we perform Lighthouse audits of four Venia page types, each representing a different level of complexity. Shown below are the Lighthouse scores for the 13.1.0 release of these pages on desktop and mobile devices.
+With each new release of PWA Studio, we perform Lighthouse audits of four Venia page types, each representing a different level of complexity. Shown below are the Lighthouse scores for the 13.2.0 release of these pages on desktop and mobile devices.
 
 ### Desktop scores
 
@@ -56,7 +98,7 @@ With each new release of PWA Studio, we perform Lighthouse audits of four Venia 
 
 ## Upgrading from a previous version
 
-Use the steps outlined in this section to update your [scaffolded project][] from 13.0.0 to 13.1.0.
+Use the steps outlined in this section to update your [scaffolded project][] from 13.1.0 to 13.2.0.
 See [Upgrading versions][] for more information about upgrading between PWA Studio versions.
 
 [scaffolded project]: https://developer.adobe.com/commerce/pwa-studio/tutorials/
@@ -65,7 +107,7 @@ See [Upgrading versions][] for more information about upgrading between PWA Stud
 ### Updated package dependencies
 
 Open your `package.json` file and update the PWA Studio package dependencies to the versions associated with this release.
-The following table lists the latest versions of each package as of 13.1.0. The **bolded** versions with an asterisk (*) are the packages that were updated from PWA Studio 13.0.0.
+The following table lists the latest versions of each package as of 13.2.0. The **bolded** versions with an asterisk (*) are the packages that were updated from PWA Studio 13.1.0.
 
 **NOTE:**
 Your project may not depend on some packages listed in this table.
@@ -98,17 +140,59 @@ Your project may not depend on some packages listed in this table.
 | `upward-php`                           | 2.0.1          |
 
 
-[PWA-3067]: https://jira.corp.adobe.com/browse/PWA-3067
-[PWA-2985]: https://jira.corp.adobe.com/browse/PWA-2985
+[PWA-3111]: https://jira.corp.adobe.com/browse/PWA-3111
+[PWA-3112]: https://jira.corp.adobe.com/browse/PWA-3112
+[PWA-3118]: https://jira.corp.adobe.com/browse/PWA-3118
+[PWA-3110]: https://jira.corp.adobe.com/browse/PWA-3110
+[PWA-3108]: https://jira.corp.adobe.com/browse/PWA-3108
+[PWA-3107]: https://jira.corp.adobe.com/browse/PWA-3107
+[PWA-3109]: https://jira.corp.adobe.com/browse/PWA-3109
+[PWA-3084]: https://jira.corp.adobe.com/browse/PWA-3084
+[PWA-3051]: https://jira.corp.adobe.com/browse/PWA-3051
+[PWA-3090]: https://jira.corp.adobe.com/browse/PWA-3090
+[PWA-3139]: https://jira.corp.adobe.com/browse/PWA-3139
+[PWA-3155]: https://jira.corp.adobe.com/browse/PWA-3155
+[PWA-3134]: https://jira.corp.adobe.com/browse/PWA-3134
+[PWA-3122]: https://jira.corp.adobe.com/browse/PWA-3122
+[PWA-3121]: https://jira.corp.adobe.com/browse/PWA-3121
+[PWA-3093]: https://jira.corp.adobe.com/browse/PWA-3093
+[PWA-3087]: https://jira.corp.adobe.com/browse/PWA-3087
+[PWA-3047]: https://jira.corp.adobe.com/browse/PWA-3047
+[PWA-3080]: https://jira.corp.adobe.com/browse/PWA-3080
+[PWA-3057]: https://jira.corp.adobe.com/browse/PWA-3057
+[PWA-3029]: https://jira.corp.adobe.com/browse/PWA-3029
 [PWA-2980]: https://jira.corp.adobe.com/browse/PWA-2980
+[PWA-2615]: https://jira.corp.adobe.com/browse/PWA-2615
+[PWA-2967]: https://jira.corp.adobe.com/browse/PWA-2967
 
-[4]: https://github.com/magento-commerce/venia-sample-data-modules-ee/pull/4
-[25]: https://github.com/magento-commerce/venia-sample-data-modules/pull/25
-[34]: https://github.com/magento-commerce/magento2-pwa/pull/34
-[5]: https://github.com/magento-commerce/magento2-pwa-commerce/pull/5
-[20]: https://github.com/magento-commerce/magento2-upward-connector/pull/20
-[10]: https://github.com/magento-commerce/upward-php/pull/10
-[3969]: https://github.com/magento/pwa-studio/pull/3969
+[4120]: https://github.com/magento/pwa-studio/pull/4120
+[]: <>
+[4094]: https://github.com/magento/pwa-studio/pull/4094
+[4103]: https://github.com/magento/pwa-studio/pull/4103
+[4086]: https://github.com/magento/pwa-studio/pull/4086
+[4112]: https://github.com/magento/pwa-studio/pull/4112
+[4092]: https://github.com/magento/pwa-studio/pull/4092
+[4100]: https://github.com/magento/pwa-studio/pull/4100
+[4111]: https://github.com/magento/pwa-studio/pull/4111
+[4040]: https://github.com/magento/pwa-studio/pull/4040
+[4086]: https://github.com/magento/pwa-studio/pull/4086
+
+[4124]: https://github.com/magento/pwa-studio/pull/4124
+[4123]: https://github.com/magento/pwa-studio/pull/4123
+[134]: https://github.com/magento-commerce/pwa-studio-cicd/pull/134
+[4121]: https://github.com/magento/pwa-studio/pull/4121
+[4104]: https://github.com/magento/pwa-studio/pull/4104
+[4104]: https://github.com/magento/pwa-studio/pull/4104
+[4109]: https://github.com/magento/pwa-studio/pull/4109
+[8110]: https://github.com/magento-commerce/magento2ce/pull/8110
+[4114]: https://github.com/magento/pwa-studio/pull/4114
+[4118]: https://github.com/magento/pwa-studio/pull/4118
+[4102]: https://github.com/magento/pwa-studio/pull/4102
+[4060]: https://github.com/magento/pwa-studio/pull/4060
+[4115]: https://github.com/magento/pwa-studio/pull/4115
+[]: <>
 [4083]: https://github.com/magento/pwa-studio/pull/4083
+[4075]: https://github.com/magento/pwa-studio/pull/4075
+[4084]: https://github.com/magento/pwa-studio/pull/4084
 
 [PWA Studio releases]: https://github.com/magento/pwa-studio/releases
